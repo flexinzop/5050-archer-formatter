@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<documento>
+	<eventosIndividualizados> 
+		<evento > 
+			<probabilidadesPerdas> 
+				<probabilidadePerda> 
+				<probabilidadePerda/> 
+			</probabilidadesPerdas> 
+			<contabilizacoes>
+				<contabilizacao/> 
+				<contabilizacao/> 
+				<contabilizacao/> 
+			</contabilizacoes>
+		</evento> 
+	</eventosIndividualizados>
+	<eventosConsolidados>
+		<eventoConsolidado/> 
+	</eventosConsolidados>
+	<sistemasOrigem> 				
+		<sistema/>		
+	</sistemasOrigem> 					
+	<contasSubtitulosInternos> 				
+	  <conta/> 	
+	  <conta/> 		
+	  <conta/> 
+	</contasSubtitulosInternos>				
+</documento>
