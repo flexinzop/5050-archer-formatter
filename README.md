@@ -7,7 +7,7 @@ Script em Python para normalizar arquivos provenientes do Archer no formato CSV 
 
 ## Índice
 
-- [Instalação](Em breve)(#instalação)
+- [Instalação (Em breve)](#instalação)
 - [Como Usar](#como-usar)
 - [Funcionalidades](#funcionalidades)
 - [Contribuindo](#contribuindo)
