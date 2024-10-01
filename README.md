@@ -1,7 +1,7 @@
 # 5050-archer-formatter
 Script em Python para normalizar arquivos provenientes do Archer no formato CSV para o formato XML
 
-<img src="https://athenasolucoes.com/wp-content/uploads/2020/09/logo-athena.svg" alt="Logo do Projeto" width="200"/>
+<img src="https://athenasolucoes.com/wp-content/uploads/2020/09/logo-athena.svg" alt="Logo do Projeto" width="350"/>
 
 > Uma breve descrição sobre o que seu projeto faz e qual problema resolve.
 
