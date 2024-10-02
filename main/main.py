@@ -1,4 +1,4 @@
-import pandas as pd # type: ignore
+import pandas as pd
 import xml.etree.ElementTree as ET
 import sys
 
@@ -10,8 +10,8 @@ from apply_rules import create_json_handler
 #----------------------------------------------------------------#
 #                                                                #
 #     Desc: Script para converter arquivos CSV                   #
-#     em XML mantendo o padrão elencado pelo BACEN CADOC 5050    #                                                  #
-#     Author: Samuel Pimenta                                     #                                        #
+#     em XML mantendo o padrão elencado pelo BACEN CADOC 5050    #
+#     Author: Samuel Pimenta                                     #
 #     Company: Athena Soluções Inteligentes                      #
 #     Data: 01/10/24                                             #
 #                                                                #
@@ -22,10 +22,6 @@ if __name__ == "__main__":
     if len(sys.argv) != 3:
         print("Usage: python main.py <csv_file_path> <output_folder_path>")
         sys.exit(1)
-
-    df = read_file("Loss Event/base.csv")
-    create_json_handler(df)
-    convert_file(df)
     
     # Get CSV file path and output folder from arguments
     csv_file_path = sys.argv[1]
