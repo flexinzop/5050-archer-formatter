@@ -23,7 +23,7 @@ if __name__ == "__main__":
         print("Usage: python main.py <csv_file_path> <output_folder_path>")
         sys.exit(1)
 
-    df = read_file("Eventos de perda/base.csv")
+    df = read_file("Loss Event/base.csv")
     create_json_handler(df)
     convert_file(df)
     
