@@ -38,4 +38,4 @@ pip install -r requirements.txt
 ## Autores
 
 - Samuel Pimenta - Consultor GRC
-- 
+- Pedro Brito - Estagiário
