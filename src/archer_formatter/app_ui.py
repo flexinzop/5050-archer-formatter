@@ -3,6 +3,8 @@ from tkinter import filedialog, messagebox
 import os
 import subprocess
 
+# The graphical user interface script. It allows the user to select a CSV file and an output folder, and then convert the CSV file to XML.
+
 def select_csv_file():
     global csv_file_path
     csv_file_path = filedialog.askopenfilename(

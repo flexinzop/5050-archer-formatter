@@ -2,12 +2,13 @@ import pandas as pd
 import xml.etree.ElementTree as ET
 import sys
 
-from read_csv import read_file
-from sanitize_csv import sanitize_file
-from convert_to_xml import convert_file
-from apply_rules import create_json_handler
+from src.archer_formatter.read_csv import read_file
+from src.archer_formatter.sanitize_csv import sanitize_file
+from src.archer_formatter.convert_to_xml import convert_file
+from src.archer_formatter.apply_rules import create_json_handler
 
 #----------------------------------------------------------------#
+#             The main entry point of application.               #
 #                                                                #
 #     Desc: Script para converter arquivos CSV                   #
 #     em XML mantendo o padrão elencado pelo BACEN CADOC 5050    #
