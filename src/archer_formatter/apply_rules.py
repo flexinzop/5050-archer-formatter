@@ -3,3 +3,5 @@
 def create_json_handler(df):
     df['JSON_handler'] = None
     pass
+
+#testando

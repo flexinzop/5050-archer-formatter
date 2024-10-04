@@ -52,6 +52,7 @@ pip install -r requirements.txt
 - [x] Permitir converter documentos CSV em XML
 - [ ] Verificar se o documento XML segue os padrões do CADOC 5050 do BACEN
 - [ ] Adequar documento ao padrão CADOC 5050 do BACEN
+- [ ] Permitir a integração com a API do Archer
 
 ## Autores
 
