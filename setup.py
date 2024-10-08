@@ -1,1 +1,1 @@
-# Used if you decide to package your application for distribution.
+# Application for distribution.
