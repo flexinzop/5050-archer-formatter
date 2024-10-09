@@ -1,0 +1,33 @@
+{
+  "cabeçalho": {
+    "codigoDocumento": "",
+    "dataBase": "",
+    "codigoConglomerado": "",
+    "cnpj": "",
+    "tipoRemessa": "",
+    "opcaoPorProvisaoAcumulada": ""
+  },
+  "bloco1_eventosIndividualizados": {
+    "idEvento": "",
+    "categoriaNivel1": "",
+    "totalPerdaEfetiva": "",
+    "totalProvisao": "",
+    "totalRecuperado": "",
+    "fonteRecuperacao": "",
+    "valorTotalRisco": "",
+    "dataOcorrencia": ""
+  },
+  "bloco2_eventosConsolidados": {
+    "categoriaNivel1Consol": "",
+    "numEventosTotalConsol": "",
+    "perdaEfetivaTotalConsol": ""
+  },
+  "bloco3_tabelaSistemasOrigem": {
+    "codigoSistema": "",
+    "nomeSistema": ""
+  },
+  "bloco4_tabelaSubtitulosNivelInterno": {
+    "codigoConta": "",
+    "nomeConta": ""
+  }
+}
