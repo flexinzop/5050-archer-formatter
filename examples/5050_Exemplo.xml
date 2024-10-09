@@ -3,8 +3,8 @@
 	codigoDocumento="5050" 
 	dataBase="2021-12" 
 	codigoConglomerado="C0099999" 
-	cnpj="99999999" 
 	tipoRemessa="I" 
+	cnpj="99999999" 
 	opcaoPorProvisaoAcumulada="N">
 	<eventosIndividualizados> 
 		<evento 
