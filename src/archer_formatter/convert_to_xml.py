@@ -1,4 +1,5 @@
 import xml.etree.ElementTree as ET
+from xml.dom.minidom import parseString
 
 # xml conversion
 
@@ -11,10 +12,12 @@ def convert_file(df):
             child.text = str(row[col])
 
     tree = ET.ElementTree(root)
-    tree.write("output.xml", encoding='UTF-8', xml_declaration=True)
+    xml_str = ET.tostring(root, encoding='UTF-8')
+    dom = parseString(xml_str)
+    formated_xml = dom.toprettyxml(indent="    ")  # 4 espaços de indentação
 
-    
-    output_file_path = "output.xml"
-    tree = ET.ElementTree(root)
-    tree.write(output_file_path)
+    with open ("output.xml", "w") as f:
+        f.write(formated_xml)
+
     print(f"XML file saved to your local folder")
+    return formated_xml
