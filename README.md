@@ -45,8 +45,8 @@ cd 5050-archer-formatter
 
 3. **Instale as dependências**
 pip install -r requirements.txt
-````
-````
+``
+
 ## Funcionalidades-implementadas
 
 - [x] Permitir converter documentos CSV em XML
@@ -58,4 +58,3 @@ pip install -r requirements.txt
 
 - Samuel Pimenta - Consultor GRC
 
-````
