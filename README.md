@@ -45,7 +45,7 @@ cd 5050-archer-formatter
 
 3. **Instale as dependências**
 pip install -r requirements.txt
-````
+``
 
 ## Funcionalidades-implementadas
 
@@ -54,7 +54,7 @@ pip install -r requirements.txt
 - [ ] Adequar documento ao padrão CADOC 5050 do BACEN
 - [ ] Permitir a integração com a API do Archer
 
-## Autores
+## Autores(as)
 
 - Samuel Pimenta - Consultor GRC
-- Pedro Brito - Estagiário
+
