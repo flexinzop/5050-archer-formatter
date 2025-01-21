@@ -1,16 +1,43 @@
-import pandas as pd
+import glob
+import xml.etree.ElementTree as ET
+from pathlib import Path
 
-file_path = 'data/base.csv'
+def iterate_xml_files(xml_files):
+    xml_files = archer_xml_folder.glob("*.xml")
 
-df = pd.read_csv(file_path)
+    for file in xml_files:
+        print(f"Processing file: {file}")
 
+        tree = ET.parse(file)
+        root = tree.getroot()
 
-def check_empty_columns(df):
-    empty_columns = df.columns[df.isnull().all()].tolist()
+        # Implementing only the 'eventosIndividualizados' tag
 
-    if empty_columns:
-        print(f'The following columns are empty: {empty_columns}')
-        return True
-    else:
-        print('There are no empty columns in the file.')
-        return False
+        eventos = root.find('eventosIndividualizados')  
+
+        # Nested list
+
+        xml_list = []
+
+        # Iterate through the root
+        for evento in eventos.findall("evento"):
+            id_evento = evento.get("idEvento") # Capture the value of idEvento
+            unidade_negocio = evento.get("unidadeNegocio") # Capture the value of unidadeNegocio
+            print(id_evento, unidade_negocio)
+            
+            # Iterate through the children of the event
+            
+            xml_list.append({
+                "evento": {
+                    "idEvento": id_evento,
+                    "other_fields": {attr: evento.get(attr) for attr in evento.keys() if attr != "idEvento"}
+                }
+            })
+
+            nested_list = {
+                "eventosIndividualizados": xml_list
+            }
+
+archer_xml_folder = Path("data/xml_data")
+
+iterate_xml_files(archer_xml_folder)

@@ -31,3 +31,13 @@ def check_mandatory_fields(df):
 
             return False
     return True
+
+def check_empty_columns(df):
+    empty_columns = df.columns[df.isnull().all()].tolist()
+
+    if empty_columns:
+        print(f'The following columns are empty: {empty_columns}')
+        return True
+    else:
+        print('There are no empty columns in the file.')
+        return False

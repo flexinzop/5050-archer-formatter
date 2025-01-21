@@ -6,10 +6,9 @@ from src.archer_formatter.read_csv import read_file
 from src.archer_formatter.convert_to_xml import convert_file
 from src.archer_formatter.apply_rules import create_json_handler
 from src.archer_formatter.sanitize_csv import check_mandatory_fields
-from src.archer_formatter.merge_files import check_empty_columns
+from src.archer_formatter.sanitize_csv import check_empty_columns
 
 from src.archer_formatter.logger import init_logger
-
 
 #----------------------------------------------------------------#
 #                                                                #
@@ -33,6 +32,13 @@ if __name__ == "__main__":
         def execute(self):
             self.logger.info("Starting the execution...")
             try:
+                # Merge the files within data folder
+                self.logger.info(f"Reading csv files from {self.csv_path}...")
+                self.logger.info(f"Trying to merge csv files...")
+                
+
+
+
                 self.logger.info(f"Reading the csv file {self.csv_path}...")
                 # Reading the csv file
                 print("Reading the csv file...")
@@ -63,7 +69,6 @@ if __name__ == "__main__":
             print("Converting the file to xml...")
             convert_file(self.df)
             print("The operation has been completed successfully!")
-
 
     flow = Taskflow("data/base.csv")
     flow.execute()
