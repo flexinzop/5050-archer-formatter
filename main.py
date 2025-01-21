@@ -1,10 +1,14 @@
 import pandas as pd
 import xml.etree.ElementTree as ET
+import logging
 
 from src.archer_formatter.read_csv import read_file
 from src.archer_formatter.convert_to_xml import convert_file
 from src.archer_formatter.apply_rules import create_json_handler
 from src.archer_formatter.sanitize_csv import check_mandatory_fields
+from src.archer_formatter.merge_files import check_empty_columns
+
+from src.archer_formatter.logger import init_logger
 
 
 #----------------------------------------------------------------#
@@ -23,11 +27,27 @@ if __name__ == "__main__":
         def __init__(self, csv_path):
             self.csv_path = csv_path
             self.df = None
+            # Initializing the logger
+            self.logger = init_logger()
 
         def execute(self):
-            # Reading the csv file
-            print("Reading the csv file...")
-            self.df = read_file(self.csv_path)
+            self.logger.info("Starting the execution...")
+            try:
+                self.logger.info(f"Reading the csv file {self.csv_path}...")
+                # Reading the csv file
+                print("Reading the csv file...")
+                self.df = read_file(self.csv_path)
+                self.logger.info("The csv file has been read successfully!")
+            except Exception as e:
+                self.logger.error(f"Error reading the csv file: {e}")
+                print(f"Error reading the csv file: {e}")
+                raise e
+            
+            # Checking the empty columns
+            print("Checking the empty columns...")
+            if check_empty_columns(self.df):
+                self.logger.error("There are empty columns in the csv file... Exiting")
+                return  # Return if empty columns
 
             # Creating the json handler
             print("Creating the json handler...")
@@ -36,8 +56,8 @@ if __name__ == "__main__":
             # Checking the mandatory fields
             print("Checking the mandatory fields...")
             if not check_mandatory_fields(self.df):
-                print("There is missing mandatory fields in the csv file... Exiting")
-                return  # Interrompe o fluxo se faltarem campos obrigatórios
+                self.logger.error("There is missing mandatory fields in the csv file... Exiting")
+                return  # Return if missing mandatory fields
 
             # Converting the file to xml
             print("Converting the file to xml...")
