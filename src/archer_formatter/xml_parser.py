@@ -1,7 +1,4 @@
-import glob
 import xml.etree.ElementTree as ET
-from pathlib import Path
-from xml.dom.minidom import parseString
 
 def parse_eventos_individualizados(root):
     """Processa os subelementos de 'eventosIndividualizados'."""
@@ -22,33 +19,3 @@ def parse_sistemas_origem(root):
             sistema_data = {key: value for key, value in sistema.attrib.items()}
             sistemas.append(sistema_data)
     return sistemas
-
-def iterate_xml_files(xml_folder):
-    """Itera sobre os arquivos XML em uma pasta e processa os dados."""
-    xml_files = xml_folder.glob("*.xml")
-
-    try:
-        for file in xml_files:
-            print(f"Processing file: {file}")
-            tree = ET.parse(file)
-            root = tree.getroot()
-
-            # Dados do documento
-            documento_data = {key: value for key, value in root.attrib.items()}
-
-            # Processa 'eventosIndividualizados' e 'sistemasOrigem' usando funções específicas
-            documento_data['eventosIndividualizados'] = parse_eventos_individualizados(root)
-            documento_data['sistemasOrigem'] = parse_sistemas_origem(root)
-
-            # Formata o XML do documento original
-            formatted_xml = parseString(ET.tostring(root, encoding="unicode")).toprettyxml(indent="  ")
-            print(f"Formatted XML for file {file.name}:\n{formatted_xml}")
-            print("-" * 30)
-    except Exception as e:
-        print(f"Error processing file: {e}")
-
-# Caminho para a pasta com arquivos XML
-archer_xml_folder = Path("data/xml_data")
-
-# Itera sobre os arquivos XML na pasta
-iterate_xml_files(archer_xml_folder)
