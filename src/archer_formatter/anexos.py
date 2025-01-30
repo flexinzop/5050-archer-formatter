@@ -1,4 +1,5 @@
-anexo1_categoria_n1 = {"1": "Fraudes internas","2": "Fraudes externas",
+anexo1_categoria_n1 = {"1": "Fraudes internas",
+                       "2": "Fraudes externas",
                        "3": "Demandas trabalhistas e segurança deficiente do local de trabalho",
                        "4": "Práticas inadequadas relativas a clientes, produtos e serviços",
                        "5": "Danos a ativos físicos próprios ou em uso pela instituição",
