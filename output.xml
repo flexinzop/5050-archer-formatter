@@ -1,27 +1,11 @@
 <?xml version="1.0" ?>
-<documento>
-    <Item>
-        <categoriaNivel1Consol>1</categoriaNivel1Consol>
-        <numEventosTotalConsol>10</numEventosTotalConsol>
-        <perdaEfetivaTotalConsol>3000.0</perdaEfetivaTotalConsol>
-        <codigoDocumento>5050</codigoDocumento>
-        <dataBase>07/02/2020</dataBase>
-        <codigoConglomerado>C0099999</codigoConglomerado>
-        <cnpj>99999999</cnpj>
-        <tipoRemessa>1</tipoRemessa>
-        <opcaoPorProvisaoAcumulada>N</opcaoPorProvisaoAcumulada>
-        <idEvento>11111111111111111Abc1234567890</idEvento>
-        <categoriaNivel1>1</categoriaNivel1>
-        <totalPerdaEfetiva>9.999.999</totalPerdaEfetiva>
-        <totalProvisao>9.999.999</totalProvisao>
-        <totalRecuperado>9.999.999</totalRecuperado>
-        <fonteRecuperacao>nan</fonteRecuperacao>
-        <valorTotalRisco>nan</valorTotalRisco>
-        <dataOcorrencia>nan</dataOcorrencia>
-        <codigoSistema>nan</codigoSistema>
-        <nomeSistema>nan</nomeSistema>
-        <codigoConta>nan</codigoConta>
-        <nomeConta>nan</nomeConta>
-        <JSON_handler>None</JSON_handler>
-    </Item>
+<documento codigoDocumento="5050">
+  <eventosIndividualizados>
+    <evento idEvento="419679"/>
+    <evento idEvento="422441"/>
+    <evento idEvento="419517"/>
+    <evento idEvento="419576"/>
+    <evento idEvento="419594"/>
+    <evento idEvento="419990"/>
+  </eventosIndividualizados>
 </documento>
