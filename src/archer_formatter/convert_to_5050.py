@@ -1,5 +1,6 @@
 import xml.etree.ElementTree as ET
 from xml.dom.minidom import parseString
+from archer_formatter.hash_file import calculate_hash
 import re  # Para limpar tags HTML
 from archer_formatter.read_xml_file import read_file, get_field_definitions, mapeamento_cadoc
 
@@ -84,6 +85,8 @@ def create_cadoc_template(records_data):
     with open("output.xml", "w", encoding="utf-8") as file:
         file.write(pretty_xml)
     print("✅ XML criado e salvo com sucesso em 'output.xml' com encoding UTF-8!")
+
+    print(calculate_hash("output.xml"))
 
 # Folder with XML files from Archer
 xml_folder = "data/xml_data/real_data"
