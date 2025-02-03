@@ -1,4 +1,5 @@
 import xml.etree.ElementTree as ET
+from datetime import datetime
 from xml.dom.minidom import parseString
 from archer_formatter.hash_file import calculate_hash
 import re  # Para limpar tags HTML
@@ -51,9 +52,7 @@ def process_all_xmls(xml_folder_path):
                         record_data[field_name] = field_value  # Link field name to record value
 
             records_data.append(record_data)  # Append record to list
-
     return field_mappings, records_data
-"""Create XML formatted on BACEN 5050 model, consolidate all records from Archer."""
 
 def create_cadoc_template(records_data):
     """Create XML formatted on BACEN 5050 model, consolidate all records from Archer."""
@@ -80,13 +79,19 @@ def create_cadoc_template(records_data):
     pretty_xml = parseString(xml_string).toprettyxml(indent="  ")  # 2 spaces indentation
 
     pretty_xml = '<?xml version="1.0" encoding="utf-8"?>\n' + "\n".join(pretty_xml.split("\n")[1:])
-
+    
+    data_atual = datetime.now()
+    
+    data_atual_formatada = data_atual.strftime("%Y-%m-%d")
+    
+    final_filename = "cadoc-exported" + data_atual_formatada + ".xml"
+    
     # Save the formatted XML prettified
-    with open("output.xml", "w", encoding="utf-8") as file:
+    with open(final_filename, "w", encoding="utf-8") as file:
         file.write(pretty_xml)
-    print("✅ XML criado e salvo com sucesso em 'output.xml' com encoding UTF-8!")
+    print("✅ XML criado e salvo com sucesso em com encoding UTF-8!")
 
-    print(calculate_hash("output.xml"))
+    print(calculate_hash(final_filename))
 
 # Folder with XML files from Archer
 xml_folder = "data/xml_data/real_data"

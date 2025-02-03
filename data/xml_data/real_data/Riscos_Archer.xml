@@ -50,7 +50,7 @@
   <Record contentId="419576" levelId="147" levelGuid="9336b0bb-59d1-401e-914e-53663e4d1faf" moduleId="355" parentId="0">
     <Field id="26680" guid="ab58d54b-391d-4970-a7f8-a499ea4c7606" type="1">&lt;p&gt;Risco&lt;/p&gt;</Field>
     <Field id="12191" guid="cc36c01a-538e-47d3-bacc-104af79953fe" type="6">419576</Field>
-    <Field id="26684" guid="9c5d961f-f7e6-4ec3-8080-e8b60aebe386" type="1">n1</Field>
+    <Field id="26684" guid="9c5d961f-f7e6-4ec3-8080-e8b60aebe386" type="1">1000000</Field>
     <Field id="28912" guid="f159aa94-678e-43e1-9236-476c68fdbc1f" type="4" />
     <Field id="12226" guid="56fd1d4e-92f5-4b03-9923-e6fe05d89131" type="3" />
     <Field id="26682" guid="69845593-f498-4ad4-8649-845dc0882b0d" type="9">
