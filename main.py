@@ -15,7 +15,9 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "src"
 from archer_formatter.read_xml_file import read_file
 from archer_formatter.convert_to_5050 import process_all_xmls, create_cadoc_template
 from archer_formatter.logger import init_logger
+# from archer_formatter.validation import validation_rules
 
+filtered_records = []
 
 class Taskflow:
     def __init__(self, xml_path):
@@ -48,10 +50,29 @@ class Taskflow:
             # Validate the XML
             self.logger.info("Processing XML files and extracting field definitions...\n")
             field_mappings, records_data = process_all_xmls(self.xml_path)
+            
+            for record in records_data:
+                try:
+                    valor_risco = float(str(record.get("N_Risco", "0")).replace(",", "").strip())
+                    
+                    if valor_risco > 1000000:
+                        filtered_records.append(record)  # Mantém o registro válido
+                        print(f"✅ Registro {record.get('idEvento', 'N/A')} incluído no XML (N_Risco: {valor_risco})")
+                    else:
+                        self.logger.warning(f"⚠️ Registro {record.get('idEvento', 'N/A')} descartado (N_Risco: {valor_risco})")
 
+                except ValueError:
+                    self.logger.error(f"❌ Erro ao converter N_Risco para número no registro {record.get('idEvento', 'N/A')}")
+
+            if not filtered_records:
+                self.logger.warning("⚠️ Nenhum registro válido encontrado para geração do XML.")
+            else:
+                self.logger.info(f"✅ {len(filtered_records)} registros válidos serão incluídos no XML.")
+                create_cadoc_template(filtered_records)
+            
             # Generate XML based on CADOC 5050 template
-            self.logger.info("Generating the CADOC 5050 XML output...")
-            create_cadoc_template(records_data)
+            # self.logger.info("Generating the CADOC 5050 XML output...")
+            # create_cadoc_template(records_data)
 
             self.logger.info("XML successfully generated and saved as 'output.xml'!")
 

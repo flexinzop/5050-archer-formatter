@@ -98,11 +98,6 @@ xml_folder = "data/xml_data/real_data"
 # Process all XML files and get fields and records
 field_mappings, records_data = process_all_xmls(xml_folder)
 
-# Debug: check if the values of "Classificar de Evento" are being extracted correctly
-"""REMOVE THIS CODE SNIPPET"""
-for record in records_data:
-    print(f"Registro ID: {record.get('idEvento', 'N/A')}, Classificar de Evento: {record.get('Classificar de Evento', 'N/A')}")
-
 # Call the function to create the XML in CADOC 5050 format
 # create_cadoc_template(records_data)
 if __name__ == "__main__":

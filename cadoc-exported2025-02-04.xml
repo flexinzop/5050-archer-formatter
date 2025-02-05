@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<documento codigoDocumento="5050" dataBase="2025-01" codigoConglomerado="C0099999" tipoRemessa="I" cnpj="99999999" opcaoPorProvisaoAcumulada="N">
+  <eventosIndividualizados>
+    <evento idEvento="419576" categoriaNivel1="1000001"/>
+  </eventosIndividualizados>
+  <probabilidadesPerdas/>
+  <contabilizacoes/>
+  <eventosConsolidados/>
+  <sistemasOrigem/>
+  <contasSubtitulosInternos/>
+</documento>

@@ -5,7 +5,7 @@ from pathlib import Path
 mapeamento_cadoc = {
     "eventosIndividualizados": {
         "idEvento": "idEvento",
-        "categoriaNivel1": "Risco",
+        "categoriaNivel1": "N_Risco",
         "tipoAvaliacao": "",
         "unidadeNegocio": "",
         "dataOcorrencia": "",
