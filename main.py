@@ -15,7 +15,8 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "src"
 from archer_formatter.read_xml_file import read_file
 from archer_formatter.convert_to_5050 import process_all_xmls, create_cadoc_template
 from archer_formatter.logger import init_logger
-from archer_formatter.utils import formatar_valor_decimal
+from archer_formatter.utils import formatar_valor_decimal, format_date
+from archer_formatter.anexos import mapear_categoria_n1
 
 class Taskflow:
     def __init__(self, xml_path):
@@ -72,12 +73,18 @@ class Taskflow:
                     perda_formatada, perda_float = formatar_valor_decimal(record.get("totalPerdaEfetiva", "0").strip())
                     # 📌 Converter e obter os dois valores para 'totalRecuperado'
                     recuperado_formatado, recuperado_float = formatar_valor_decimal(record.get("totalRecuperado", "0").strip())
+                    dataOcorrencia_formatada = format_date(record.get("dataOcorrencia", "0").strip())
+                    # 📌 Mapear categoria textual para código numérico
+                    categoria_texto = record.get("categoriaNivel1", "").strip()
+                    categoria_numerica = mapear_categoria_n1(categoria_texto)  # 🔥 Aqui chamamos a função!
 
                     if valor_risco > 1000000:  # 📌 Comparação feita com o FLOAT
                          # Insert STRING on XML
-                        record["valorTotalRisco"] = valor_formatado 
+                        record["valorTotalRisco"] = valor_formatado #
                         record["totalPerdaEfetiva"] = perda_formatada  # 
                         record["totalRecuperado"] = recuperado_formatado #
+                        record["dataOcorrencia"] = dataOcorrencia_formatada #
+                        record["categoriaNivel1"] = categoria_numerica #
 
                         filtered_records.append(record)
                         self.logger.info(f"✅ Registro {record.get('idEvento', 'N/A')} incluído no XML (valorTotalRisco: {record['valorTotalRisco']}, totalPerdaEfetiva: {record['totalPerdaEfetiva']})")

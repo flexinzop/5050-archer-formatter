@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-16"?>
 <Records count="12">
   <Record contentId="419679" levelId="147" levelGuid="9336b0bb-59d1-401e-914e-53663e4d1faf" moduleId="355" parentId="0">
     <Field id="26680" guid="ab58d54b-391d-4970-a7f8-a499ea4c7606" type="1">&lt;p&gt;&amp;nbsp;Análise de crédito realizada sem avaliar criteriosamente a capacidade de pagamento do cliente e toda documentação pertinente do financiamento.&lt;/p&gt;</Field>
@@ -19,6 +19,8 @@
       <Reference id="419705">FR2</Reference>
       <Reference id="419707">FR3</Reference>
     </Field>
+    <Field id="31962" guid="339b145f-b4f7-4bdd-9041-7e61e3a5238c" type="4" />
+    <Field id="31963" guid="b7cdaeb4-2f69-452a-8fe0-c7dfe80c772b" type="1">I</Field>
   </Record>
   <Record contentId="422441" levelId="147" levelGuid="9336b0bb-59d1-401e-914e-53663e4d1faf" moduleId="355" parentId="0">
     <Field id="26680" guid="ab58d54b-391d-4970-a7f8-a499ea4c7606" type="1">&lt;p&gt;Negação da Obrigação 1&lt;/p&gt;</Field>
@@ -35,6 +37,8 @@
     <Field id="31959" guid="8ebf492e-0feb-413b-b6e6-2096072cd927" type="1" />
     <Field id="27725" guid="6a6b1029-9b89-4351-83d7-c85b00a1e809" type="23" />
     <Field id="26682" guid="69845593-f498-4ad4-8649-845dc0882b0d" type="9" />
+    <Field id="31962" guid="339b145f-b4f7-4bdd-9041-7e61e3a5238c" type="4" />
+    <Field id="31963" guid="b7cdaeb4-2f69-452a-8fe0-c7dfe80c772b" type="1">I</Field>
   </Record>
   <Record contentId="453416" levelId="147" levelGuid="9336b0bb-59d1-401e-914e-53663e4d1faf" moduleId="355" parentId="0">
     <Field id="26680" guid="ab58d54b-391d-4970-a7f8-a499ea4c7606" type="1">&lt;p&gt;Registro de teste - CADOC 5050&lt;/p&gt;</Field>
@@ -51,6 +55,8 @@
     <Field id="31959" guid="8ebf492e-0feb-413b-b6e6-2096072cd927" type="1" />
     <Field id="27725" guid="6a6b1029-9b89-4351-83d7-c85b00a1e809" type="23" />
     <Field id="26682" guid="69845593-f498-4ad4-8649-845dc0882b0d" type="9" />
+    <Field id="31962" guid="339b145f-b4f7-4bdd-9041-7e61e3a5238c" type="4" />
+    <Field id="31963" guid="b7cdaeb4-2f69-452a-8fe0-c7dfe80c772b" type="1">I</Field>
   </Record>
   <Record contentId="419517" levelId="147" levelGuid="9336b0bb-59d1-401e-914e-53663e4d1faf" moduleId="355" parentId="0">
     <Field id="26680" guid="ab58d54b-391d-4970-a7f8-a499ea4c7606" type="1">&lt;p&gt;Risco&lt;/p&gt;</Field>
@@ -67,6 +73,8 @@
     <Field id="31959" guid="8ebf492e-0feb-413b-b6e6-2096072cd927" type="1" />
     <Field id="27725" guid="6a6b1029-9b89-4351-83d7-c85b00a1e809" type="23" />
     <Field id="26682" guid="69845593-f498-4ad4-8649-845dc0882b0d" type="9" />
+    <Field id="31962" guid="339b145f-b4f7-4bdd-9041-7e61e3a5238c" type="4" />
+    <Field id="31963" guid="b7cdaeb4-2f69-452a-8fe0-c7dfe80c772b" type="1">I</Field>
   </Record>
   <Record contentId="419576" levelId="147" levelGuid="9336b0bb-59d1-401e-914e-53663e4d1faf" moduleId="355" parentId="0">
     <Field id="26680" guid="ab58d54b-391d-4970-a7f8-a499ea4c7606" type="1">&lt;p&gt;Risco&lt;/p&gt;</Field>
@@ -86,6 +94,8 @@
       <Reference id="419577">FR.n1</Reference>
       <Reference id="419937">fr2.n2</Reference>
     </Field>
+    <Field id="31962" guid="339b145f-b4f7-4bdd-9041-7e61e3a5238c" type="4" />
+    <Field id="31963" guid="b7cdaeb4-2f69-452a-8fe0-c7dfe80c772b" type="1">I</Field>
   </Record>
   <Record contentId="419594" levelId="147" levelGuid="9336b0bb-59d1-401e-914e-53663e4d1faf" moduleId="355" parentId="0">
     <Field id="26680" guid="ab58d54b-391d-4970-a7f8-a499ea4c7606" type="1">&lt;p&gt;Risco 1&lt;/p&gt;</Field>
@@ -102,6 +112,8 @@
     <Field id="31959" guid="8ebf492e-0feb-413b-b6e6-2096072cd927" type="1" />
     <Field id="27725" guid="6a6b1029-9b89-4351-83d7-c85b00a1e809" type="23" />
     <Field id="26682" guid="69845593-f498-4ad4-8649-845dc0882b0d" type="9" />
+    <Field id="31962" guid="339b145f-b4f7-4bdd-9041-7e61e3a5238c" type="4" />
+    <Field id="31963" guid="b7cdaeb4-2f69-452a-8fe0-c7dfe80c772b" type="1">I</Field>
   </Record>
   <Record contentId="453711" levelId="147" levelGuid="9336b0bb-59d1-401e-914e-53663e4d1faf" moduleId="355" parentId="0">
     <Field id="26680" guid="ab58d54b-391d-4970-a7f8-a499ea4c7606" type="1">&lt;p&gt;Risco Exemplo - CADOC 5050&lt;/p&gt;</Field>
@@ -115,13 +127,19 @@
     <Field id="31955" guid="b3efc7ce-8051-4741-a02e-df017b3df4b7" type="1">10000</Field>
     <Field id="31957" guid="9e039f58-432f-446a-8f99-9f77c479b63c" type="1">38493292</Field>
     <Field id="31958" guid="b3bd3d8d-df83-406b-a787-03f41e9fcce0" type="1">2938403292</Field>
-    <Field id="31959" guid="8ebf492e-0feb-413b-b6e6-2096072cd927" type="1">470293</Field>
+    <Field id="31959" guid="8ebf492e-0feb-413b-b6e6-2096072cd927" type="1">Z1234567</Field>
     <Field id="27725" guid="6a6b1029-9b89-4351-83d7-c85b00a1e809" type="23">
       <Reference id="453422">453422</Reference>
     </Field>
     <Field id="26682" guid="69845593-f498-4ad4-8649-845dc0882b0d" type="9">
       <Reference id="419707">FR3</Reference>
     </Field>
+    <Field id="31962" guid="339b145f-b4f7-4bdd-9041-7e61e3a5238c" type="4">
+      <ListValues>
+        <ListValue id="107857" displayName="NA">NA</ListValue>
+      </ListValues>
+    </Field>
+    <Field id="31963" guid="b7cdaeb4-2f69-452a-8fe0-c7dfe80c772b" type="1">I</Field>
   </Record>
   <Record contentId="453714" levelId="147" levelGuid="9336b0bb-59d1-401e-914e-53663e4d1faf" moduleId="355" parentId="0">
     <Field id="26680" guid="ab58d54b-391d-4970-a7f8-a499ea4c7606" type="1">&lt;p&gt;Risco Exemplo 2 - CADOC 5050&lt;/p&gt;</Field>
@@ -135,13 +153,19 @@
     <Field id="31955" guid="b3efc7ce-8051-4741-a02e-df017b3df4b7" type="1">2384</Field>
     <Field id="31957" guid="9e039f58-432f-446a-8f99-9f77c479b63c" type="1">68493292</Field>
     <Field id="31958" guid="b3bd3d8d-df83-406b-a787-03f41e9fcce0" type="1">2938403292</Field>
-    <Field id="31959" guid="8ebf492e-0feb-413b-b6e6-2096072cd927" type="1">470293</Field>
+    <Field id="31959" guid="8ebf492e-0feb-413b-b6e6-2096072cd927" type="1">Z1234567</Field>
     <Field id="27725" guid="6a6b1029-9b89-4351-83d7-c85b00a1e809" type="23">
       <Reference id="453422">453422</Reference>
     </Field>
     <Field id="26682" guid="69845593-f498-4ad4-8649-845dc0882b0d" type="9">
       <Reference id="419707">FR3</Reference>
     </Field>
+    <Field id="31962" guid="339b145f-b4f7-4bdd-9041-7e61e3a5238c" type="4">
+      <ListValues>
+        <ListValue id="107856" displayName="CIV">CIV</ListValue>
+      </ListValues>
+    </Field>
+    <Field id="31963" guid="b7cdaeb4-2f69-452a-8fe0-c7dfe80c772b" type="1">I</Field>
   </Record>
   <Record contentId="453715" levelId="147" levelGuid="9336b0bb-59d1-401e-914e-53663e4d1faf" moduleId="355" parentId="0">
     <Field id="26680" guid="ab58d54b-391d-4970-a7f8-a499ea4c7606" type="1">&lt;p&gt;Risco Exemplo 3 - CADOC 5050&lt;/p&gt;</Field>
@@ -155,13 +179,19 @@
     <Field id="31955" guid="b3efc7ce-8051-4741-a02e-df017b3df4b7" type="1">2384</Field>
     <Field id="31957" guid="9e039f58-432f-446a-8f99-9f77c479b63c" type="1">68493292</Field>
     <Field id="31958" guid="b3bd3d8d-df83-406b-a787-03f41e9fcce0" type="1">703292</Field>
-    <Field id="31959" guid="8ebf492e-0feb-413b-b6e6-2096072cd927" type="1">470293</Field>
+    <Field id="31959" guid="8ebf492e-0feb-413b-b6e6-2096072cd927" type="1">Z1234567</Field>
     <Field id="27725" guid="6a6b1029-9b89-4351-83d7-c85b00a1e809" type="23">
       <Reference id="453422">453422</Reference>
     </Field>
     <Field id="26682" guid="69845593-f498-4ad4-8649-845dc0882b0d" type="9">
       <Reference id="419707">FR3</Reference>
     </Field>
+    <Field id="31962" guid="339b145f-b4f7-4bdd-9041-7e61e3a5238c" type="4">
+      <ListValues>
+        <ListValue id="107855" displayName="TRA">TRA</ListValue>
+      </ListValues>
+    </Field>
+    <Field id="31963" guid="b7cdaeb4-2f69-452a-8fe0-c7dfe80c772b" type="1">I</Field>
   </Record>
   <Record contentId="453420" levelId="147" levelGuid="9336b0bb-59d1-401e-914e-53663e4d1faf" moduleId="355" parentId="0">
     <Field id="26680" guid="ab58d54b-391d-4970-a7f8-a499ea4c7606" type="1">&lt;p&gt;Risco teste 3 - CADOC 5050&lt;/p&gt;</Field>
@@ -180,6 +210,8 @@
       <Reference id="453422">453422</Reference>
     </Field>
     <Field id="26682" guid="69845593-f498-4ad4-8649-845dc0882b0d" type="9" />
+    <Field id="31962" guid="339b145f-b4f7-4bdd-9041-7e61e3a5238c" type="4" />
+    <Field id="31963" guid="b7cdaeb4-2f69-452a-8fe0-c7dfe80c772b" type="1">I</Field>
   </Record>
   <Record contentId="453417" levelId="147" levelGuid="9336b0bb-59d1-401e-914e-53663e4d1faf" moduleId="355" parentId="0">
     <Field id="26680" guid="ab58d54b-391d-4970-a7f8-a499ea4c7606" type="1">&lt;p&gt;Riscos teste 2 - CADOC 5050&lt;/p&gt;</Field>
@@ -196,6 +228,8 @@
     <Field id="31959" guid="8ebf492e-0feb-413b-b6e6-2096072cd927" type="1" />
     <Field id="27725" guid="6a6b1029-9b89-4351-83d7-c85b00a1e809" type="23" />
     <Field id="26682" guid="69845593-f498-4ad4-8649-845dc0882b0d" type="9" />
+    <Field id="31962" guid="339b145f-b4f7-4bdd-9041-7e61e3a5238c" type="4" />
+    <Field id="31963" guid="b7cdaeb4-2f69-452a-8fe0-c7dfe80c772b" type="1">I</Field>
   </Record>
   <Record contentId="419990" levelId="147" levelGuid="9336b0bb-59d1-401e-914e-53663e4d1faf" moduleId="355" parentId="0">
     <Field id="26680" guid="ab58d54b-391d-4970-a7f8-a499ea4c7606" type="1">&lt;p&gt;teste&lt;/p&gt;</Field>
@@ -212,6 +246,8 @@
     <Field id="31959" guid="8ebf492e-0feb-413b-b6e6-2096072cd927" type="1" />
     <Field id="27725" guid="6a6b1029-9b89-4351-83d7-c85b00a1e809" type="23" />
     <Field id="26682" guid="69845593-f498-4ad4-8649-845dc0882b0d" type="9" />
+    <Field id="31962" guid="339b145f-b4f7-4bdd-9041-7e61e3a5238c" type="4" />
+    <Field id="31963" guid="b7cdaeb4-2f69-452a-8fe0-c7dfe80c772b" type="1">I</Field>
   </Record>
   <Metadata>
     <FieldDefinitions>
@@ -229,6 +265,8 @@
       <FieldDefinition id="31957" guid="9e039f58-432f-446a-8f99-9f77c479b63c" name="codSistemaOrigem" alias="codSistemaOrigem" />
       <FieldDefinition id="31958" guid="b3bd3d8d-df83-406b-a787-03f41e9fcce0" name="codigoEventoOrigem" alias="codigoEventoOrigem" />
       <FieldDefinition id="31959" guid="8ebf492e-0feb-413b-b6e6-2096072cd927" name="idBacen" alias="idBacen" />
+      <FieldDefinition id="31962" guid="339b145f-b4f7-4bdd-9041-7e61e3a5238c" name="naturezaContingencia" alias="naturezaContingencia" />
+      <FieldDefinition id="31963" guid="b7cdaeb4-2f69-452a-8fe0-c7dfe80c772b" name="tipoAvaliacao" alias="tipoAvaliacao" />
     </FieldDefinitions>
   </Metadata>
   <LevelCounts>

@@ -10,7 +10,7 @@ def filter_valid_records(records_data):
     """
 
     filtered_records = []
-    required_fields = ["idEvento", "valorTotalRisco", "categoriaNivel1", "dataOcorrencia", "unidadeNegocio",
+    required_fields = ["idEvento", "valorTotalRisco", "categoriaNivel1", "naturezaContingencia", "tipoAvaliacao", "dataOcorrencia", "unidadeNegocio",
                        "totalPerdaEfetiva", "totalRecuperado", "codSistemaOrigem", "codigoEventoOrigem", "idBacen"]
 
     if not records_data:

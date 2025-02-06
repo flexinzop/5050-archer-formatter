@@ -19,3 +19,7 @@ def formatar_valor_decimal(valor):
 
     except ValueError:
         raise ValueError("O valor fornecido não pode ser convertido para número.")
+    
+def format_date(date):
+    dia, mes, ano = date.split("/")
+    return f"{ano}-{mes}-{dia}"
