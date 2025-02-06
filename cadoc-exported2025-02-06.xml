@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<documento codigoDocumento="5050" dataBase="2025-01" codigoConglomerado="C0099999" tipoRemessa="I" cnpj="99999999" opcaoPorProvisaoAcumulada="N">
+  <eventosIndividualizados>
+    <evento idEvento="453711" categoriaNivel1="Falhas em Sistemas de Tecnologia da Informação" valorTotalRisco="1200000.00" unidadeNegocio="Área TESTE" dataOcorrencia="30/01/2025" totalPerdaEfetiva="1000000.00" totalRecuperado="10000.00" codSistemaOrigem="38493292" codigoEventoOrigem="2938403292" idBacen="470293"/>
+    <evento idEvento="453714" categoriaNivel1="Falhas em Sistemas de Tecnologia da Informação" valorTotalRisco="1200000.00" unidadeNegocio="Área TESTE" dataOcorrencia="30/01/2025" totalPerdaEfetiva="10000000.00" totalRecuperado="2384.00" codSistemaOrigem="68493292" codigoEventoOrigem="2938403292" idBacen="470293"/>
+    <evento idEvento="453715" categoriaNivel1="Fraudes Externas" valorTotalRisco="1200000.00" unidadeNegocio="Área TESTE" dataOcorrencia="30/01/2025" totalPerdaEfetiva="340000.00" totalRecuperado="2384.00" codSistemaOrigem="68493292" codigoEventoOrigem="703292" idBacen="470293"/>
+  </eventosIndividualizados>
+  <probabilidadesPerdas/>
+  <contabilizacoes/>
+  <eventosConsolidados/>
+  <sistemasOrigem/>
+  <contasSubtitulosInternos/>
+</documento>

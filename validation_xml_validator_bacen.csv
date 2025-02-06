@@ -1,0 +1,54 @@
+INICIANDO VALIDAÇÃO Thu Feb 06 02:34:36 BRT 2025
+
+cvc-pattern-valid: Value 'Falhas em Sistemas de Tecnologia da Informação' is not facet-valid with respect to pattern '[1-8]{1}' for type 'tipoCategoriaNivel1'.
+cvc-attribute.3: The value 'Falhas em Sistemas de Tecnologia da Informação' of attribute 'categoriaNivel1' on element 'evento' is not valid with respect to its type, 'tipoCategoriaNivel1'.
+
+cvc-pattern-valid: Value 'Área TESTE' is not facet-valid with respect to pattern '[1-8]{1}' for type 'tipoUnidadeNegocio'.
+cvc-attribute.3: The value 'Área TESTE' of attribute 'unidadeNegocio' on element 'evento' is not valid with respect to its type, 'tipoUnidadeNegocio'.
+
+cvc-datatype-valid.1.2.1: '30/01/2025' is not a valid value for 'date'.
+cvc-attribute.3: The value '30/01/2025' of attribute 'dataOcorrencia' on element 'evento' is not valid with respect to its type, 'tipoData'.
+
+cvc-pattern-valid: Value '470293' is not facet-valid with respect to pattern '(Z|z)[0-9]{7}|(I|i)[0-9]{5}' for type 'tipoIdBacen'.
+cvc-attribute.3: The value '470293' of attribute 'idBacen' on element 'evento' is not valid with respect to its type, 'tipoIdBacen'.
+
+cvc-complex-type.4: Attribute 'tipoAvaliacao' must appear on element 'evento'.
+cvc-complex-type.4: Attribute 'naturezaContingencia' must appear on element 'evento'.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+cvc-pattern-valid: Value 'Falhas em Sistemas de Tecnologia da Informação' is not facet-valid with respect to pattern '[1-8]{1}' for type 'tipoCategoriaNivel1'.
+cvc-attribute.3: The value 'Falhas em Sistemas de Tecnologia da Informação' of attribute 'categoriaNivel1' on element 'evento' is not valid with respect to its type, 'tipoCategoriaNivel1'.
+
+cvc-pattern-valid: Value 'Área TESTE' is not facet-valid with respect to pattern '[1-8]{1}' for type 'tipoUnidadeNegocio'.
+cvc-attribute.3: The value 'Área TESTE' of attribute 'unidadeNegocio' on element 'evento' is not valid with respect to its type, 'tipoUnidadeNegocio'.
+
+cvc-datatype-valid.1.2.1: '30/01/2025' is not a valid value for 'date'.
+cvc-attribute.3: The value '30/01/2025' of attribute 'dataOcorrencia' on element 'evento' is not valid with respect to its type, 'tipoData'.
+
+cvc-pattern-valid: Value '470293' is not facet-valid with respect to pattern '(Z|z)[0-9]{7}|(I|i)[0-9]{5}' for type 'tipoIdBacen'.
+cvc-attribute.3: The value '470293' of attribute 'idBacen' on element 'evento' is not valid with respect to its type, 'tipoIdBacen'.
+
+cvc-complex-type.4: Attribute 'tipoAvaliacao' must appear on element 'evento'.
+cvc-complex-type.4: Attribute 'naturezaContingencia' must appear on element 'evento'.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+cvc-pattern-valid: Value 'Fraudes Externas' is not facet-valid with respect to pattern '[1-8]{1}' for type 'tipoCategoriaNivel1'.
+cvc-attribute.3: The value 'Fraudes Externas' of attribute 'categoriaNivel1' on element 'evento' is not valid with respect to its type, 'tipoCategoriaNivel1'.
+
+cvc-pattern-valid: Value 'Área TESTE' is not facet-valid with respect to pattern '[1-8]{1}' for type 'tipoUnidadeNegocio'.
+cvc-attribute.3: The value 'Área TESTE' of attribute 'unidadeNegocio' on element 'evento' is not valid with respect to its type, 'tipoUnidadeNegocio'.
+
+cvc-datatype-valid.1.2.1: '30/01/2025' is not a valid value for 'date'.
+cvc-attribute.3: The value '30/01/2025' of attribute 'dataOcorrencia' on element 'evento' is not valid with respect to its type, 'tipoData'.
+cvc-pattern-valid: Value '470293' is not facet-valid with respect to pattern '(Z|z)[0-9]{7}|(I|i)[0-9]{5}' for type 'tipoIdBacen'.
+cvc-attribute.3: The value '470293' of attribute 'idBacen' on element 'evento' is not valid with respect to its type, 'tipoIdBacen'.
+cvc-complex-type.4: Attribute 'tipoAvaliacao' must appear on element 'evento'.
+cvc-complex-type.4: Attribute 'naturezaContingencia' must appear on element 'evento'.
+cvc-complex-type.2.4.a: Invalid content was found starting with element 'probabilidadesPerdas'. One of '{eventosConsolidados, sistemasOrigem, contasSubtitulosInternos}' is expected.
+cvc-complex-type.2.4.b: The content of element 'contabilizacoes' is not complete. One of '{contabilizacao}' is expected.
+cvc-complex-type.2.4.b: The content of element 'eventosConsolidados' is not complete. One of '{eventoConsolidado}' is expected.
+cvc-complex-type.2.4.b: The content of element 'sistemasOrigem' is not complete. One of '{sistema}' is expected.
+cvc-complex-type.2.4.b: The content of element 'contasSubtitulosInternos' is not complete. One of '{conta}' is expected.
+TÉRMINO DO PROCESSO DE VALIDAÇÃO Thu Feb 06 02:34:36 BRT 2025

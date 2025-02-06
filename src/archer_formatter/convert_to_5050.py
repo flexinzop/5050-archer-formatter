@@ -5,6 +5,7 @@ from archer_formatter.hash_file import calculate_hash
 import re  # Para limpar tags HTML
 from archer_formatter.read_xml_file import read_file, get_field_definitions, mapeamento_cadoc
 
+
 # Define function to extract text from Field element from Archer XML
 def extract_text_from_field(field):
     """Extract all values from XML tags <Field> e <ListValues>."""
@@ -19,13 +20,13 @@ def extract_text_from_field(field):
 
 def process_all_xmls(xml_folder_path):
     """Read all XML files from folder and get <FieldDefinition> and records."""
-    field_mappings = {}  # Final DICT {arquivo.xml: {campo_Archer: ID}}
-    records_data = []  # List of extracted records from dict
+    field_mappings = {}  # DICT {arquivo.xml: {campo_Archer: ID}}
+    records_data = []  # Lista de registros extraídos
 
-    # Get a list from all files present in the folder
+    # Lendo todos os arquivos XML na pasta
     xml_files_data = read_file(xml_folder_path)
 
-    if not xml_files_data:  # IF has no file, return empty
+    if not xml_files_data:
         print("Nenhum arquivo XML encontrado ou erro ao processar.")
         return {}, []
 
@@ -33,25 +34,63 @@ def process_all_xmls(xml_folder_path):
         root = xml_data["root"]
         file_name = xml_data["file_name"]
 
-        # Get <FieldDefinition> on file
+        # Obter definições de campos
         field_mappings[file_name] = get_field_definitions(root)
 
-        # Get records <Record> and each field name <Field>
-        for record in root.findall(".//Record"):
-            content_id = record.attrib.get("contentId", "")
-            record_data = {"idEvento": content_id}  # Use contentId as idEvento (FIXED)
+        # 📌 Capturar o ID do FieldDefinition associado ao Tracking_ID
+        tracking_id_field_id = None
+        for field_def in root.findall(".//FieldDefinition"):
+            if field_def.attrib.get("alias") == "Tracking_ID":  # Verifica se é o Tracking_ID
+                tracking_id_field_id = field_def.attrib.get("id")
+                break  # Só precisamos de um
 
+        if not tracking_id_field_id:
+            print(f"⚠️ Nenhum Tracking_ID encontrado no arquivo {file_name}. Pulando arquivo...")
+            continue  # Se não encontrar o Tracking_ID, pula esse arquivo
+
+        # 📌 Processar cada <Record>
+        for record in root.findall(".//Record"):
+            record_data = {}  # Criamos um dicionário para armazenar os campos do registro
+
+            # 📌 Pegar o valor do Tracking_ID no registro
+            id_evento = None
+            for field in record.findall(".//Field"):
+                if field.attrib.get("id") == tracking_id_field_id:
+                    id_evento = extract_text_from_field(field)  # Pega o valor do Tracking_ID
+                    break  # Já encontramos, podemos sair do loop
+
+            if not id_evento:
+                print(f"⚠️ Registro sem Tracking_ID encontrado. Pulando...")
+                continue  # Se não tiver Tracking_ID, ignoramos esse registro
+
+            record_data["idEvento"] = id_evento  # 🔹 Atribuímos o Tracking_ID como idEvento
+
+            # 📌 Iterar sobre os outros campos dentro do <Record>
             for field in record.findall(".//Field"):
                 field_id = field.attrib.get("id")
-                field_value = extract_text_from_field(field)  # Use the new function to extract text
+                field_value = extract_text_from_field(field)  # Função para extrair valores corretamente
 
-                # Map ID to field name using field_mappings
-                for file_name, mapping in field_mappings.items():
-                    if field_id in mapping.values():  # IF the ID is present in the mapping
+                # Verificar se o ID do campo existe no mapeamento
+                if file_name in field_mappings:
+                    mapping = field_mappings[file_name]
+                    if field_id in mapping.values():  # Se o ID do campo existir no mapeamento
                         field_name = list(mapping.keys())[list(mapping.values()).index(field_id)]
-                        record_data[field_name] = field_value  # Link field name to record value
+                        record_data[field_name] = field_value  # Associamos o nome correto ao valor
 
-            records_data.append(record_data)  # Append record to list
+            # 📌 Adicionamos o registro APÓS processar todos os campos
+            records_data.append(record_data)
+
+            # Debugging interno para verificar a extração correta do ID
+            print(f"📌 Processando registro: idEvento={record_data['idEvento']}")
+
+    # 📌 Debugging final
+    print("📌 Debug: Processamento do XML concluído.")
+    print(f"📂 Arquivos lidos: {xml_folder_path}")
+    print(f"🔎 Registros extraídos: {len(records_data)}")
+    
+    if not records_data:
+        print("⚠️ Nenhum registro foi extraído do XML! Verifique se a estrutura do XML mudou.")
+
     return field_mappings, records_data
 
 def create_cadoc_template(records_data):

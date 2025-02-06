@@ -4,17 +4,18 @@ from pathlib import Path
 # Mapeamento de campos por seção no CADOC 5050
 mapeamento_cadoc = {
     "eventosIndividualizados": {
-        "idEvento": "idEvento",
-        "categoriaNivel1": "N_Risco",
-        "tipoAvaliacao": "",
-        "unidadeNegocio": "",
-        "dataOcorrencia": "",
-        "totalPerdaEfetiva": "",
-        "totalRecuperado": "",
-        "naturezaContingencia": "",
-        "codSistemaOrigem": "",
-        "codigoEventoOrigem": "",
-        "idBacen": ""
+        "idEvento": "Tracking_ID",
+        "categoriaNivel1": "categoriaNivel1",
+        "valorTotalRisco" : "valorTotalRisco",
+        "tipoAvaliacao": "tipoAvaliacao",
+        "unidadeNegocio": "unidadeNegocio",
+        "dataOcorrencia": "dataOcorrencia",
+        "totalPerdaEfetiva": "totalPerdaEfetiva",
+        "totalRecuperado": "totalRecuperado",
+        "naturezaContingencia": "naturezaContingencia",
+        "codSistemaOrigem": "codSistemaOrigem",
+        "codigoEventoOrigem": "codigoEventoOrigem",
+        "idBacen": "idBacen"
     },
     "probabilidadesPerdas": {
         "probabilidade": "",
@@ -76,5 +77,4 @@ def get_field_definitions(root):
 
         if alias and id_field:  # Verifica se ambos existem
             atributos[alias] = id_field  # Associa o nome do campo ao ID
-
     return atributos
