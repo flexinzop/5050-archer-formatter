@@ -7,6 +7,10 @@
 #     Data: 01/10/24                                             #
 #                                                                #
 #----------------------------------------------------------------#
+
+# RUN
+# pyinstaller --name=Archer_to_5050 --onefile --add-data "src;src" --hidden-import=xml.etree.ElementTree --hidden-import=xml.dom --hidden-import=xml.dom.minidom main.py
+
 import logging
 import sys, os
 
