@@ -51,11 +51,26 @@ def mapear_categoria_n1(valor_texto):
     
     Se o valor não for encontrado, retorna "0" e registra um aviso.
     """
-    valor_texto = valor_texto.lower().strip()[:12]  # 🔥 Pega só os 12 primeiros caracteres
+    valor_texto = valor_texto.lower().strip()[:16]  # 🔥 Pega só os 12 primeiros caracteres
 
     for codigo, descricao in anexo1_categoria_n1.items():
-        if descricao.lower().strip()[:12] == valor_texto:  # 🔥 Comparação parcial
+        if descricao.lower().strip()[:16] == valor_texto:  # 🔥 Comparação parcial
             return codigo
 
     print(f"⚠️ AVISO: Categoria '{valor_texto}' não encontrada no dicionário! Retornando '0'.")
     return "0"  # Código padrão se não encontrar
+
+def mapear_categoria_n1_consolidado(valor_texto):
+    """Mapeia a descrição da categoria para seu código numérico apenas para eventos consolidados."""
+    if not valor_texto:
+        return "0"
+
+    valor_texto = valor_texto.lower().strip()[:12]  # Normaliza e pega os primeiros 12 caracteres
+
+    for codigo, descricao in anexo1_categoria_n1.items():
+        if descricao.lower().strip()[:12] == valor_texto:
+            return codigo  # Retorna o ID numérico correto
+
+    print(f"⚠️ AVISO: Categoria '{valor_texto}' não encontrada para consolidação! Retornando '0'.")
+    return "0"
+

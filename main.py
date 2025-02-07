@@ -17,6 +17,7 @@ from archer_formatter.convert_to_5050 import process_all_xmls, create_cadoc_temp
 from archer_formatter.logger import init_logger
 from archer_formatter.utils import formatar_valor_decimal, format_date
 from archer_formatter.anexos import mapear_categoria_n1
+from archer_formatter.validation import filter_valid_records
 
 class Taskflow:
     def __init__(self, xml_path):
@@ -90,7 +91,7 @@ class Taskflow:
                         self.logger.info(f"✅ Registro {record.get('idEvento', 'N/A')} incluído no XML (valorTotalRisco: {record['valorTotalRisco']}, totalPerdaEfetiva: {record['totalPerdaEfetiva']})")
 
                     else:
-                        self.warning(f"⚠️ Registro {record.get('idEvento', 'N/A')} descartado (valorTotalRisco: {valor_risco})")
+                        self.logger.warning(f"⚠️ Registro {record.get('idEvento', 'N/A')} descartado (valorTotalRisco: {valor_risco})")
 
                 except ValueError:
                     self.error(f"❌ Erro ao converter valores para número no registro {record.get('idEvento', 'N/A')}")
@@ -102,9 +103,12 @@ class Taskflow:
 
             # 📌 Gerar o XML somente com os registros completos e válidos
             self.logger.info("📝 Gerando o XML final...")
-            create_cadoc_template(filtered_records)
+            # 📌 Chamando a validação e recebendo os dois retornos (eventos individuais e eventos consolidados)
+            filtered_records, eventos_consolidados = filter_valid_records(records_data)
 
-            self.logger.info("✅ XML successfully generated and saved as 'output.xml'!")
+            # 📌 Passamos os DOIS valores ao criar o XML
+            create_cadoc_template(filtered_records, eventos_consolidados)
+
 
         except Exception as e:
             self.logger.error(f"❌ An error occurred during execution: {e}")

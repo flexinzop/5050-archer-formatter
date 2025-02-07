@@ -1,14 +1,24 @@
 import xml.etree.ElementTree as ET
 from datetime import datetime
 from xml.dom.minidom import parseString
-from archer_formatter.hash_file import calculate_hash
 import re  # Para limpar tags HTML
 from archer_formatter.read_xml_file import read_file, get_field_definitions, mapeamento_cadoc
+from archer_formatter.logger import init_logger
+from archer_formatter.utils import formatar_valor_decimal
+from archer_formatter.validation import filter_valid_records
+from archer_formatter.anexos import anexo1_categoria_n1
+from archer_formatter.anexos import mapear_categoria_n1_consolidado
 
 
-# Define function to extract text from Field element from Archer XML
+logger = init_logger()  # Inicializa o logger
+
+# Define campos obrigatórios (evita erro de importação)
+required_fields = ["idEvento", "valorTotalRisco", "categoriaNivel1", "dataOcorrencia", 
+                   "unidadeNegocio", "totalPerdaEfetiva", "totalRecuperado", 
+                   "codSistemaOrigem", "codigoEventoOrigem", "idBacen"]
+
 def extract_text_from_field(field):
-    """Extract all values from XML tags <Field> e <ListValues>."""
+    """Extrai valores do XML, removendo HTML se necessário."""
     if field.find("ListValues") is not None:
         list_value = field.find("ListValues/ListValue")
         return list_value.attrib.get("displayName", "").strip() if list_value is not None else ""
@@ -16,134 +26,169 @@ def extract_text_from_field(field):
     if field.text:
         return re.sub(r"<.*?>", "", field.text).strip()  # Remove HTML
 
-    return ""  # Return empty if no text is found
+    return ""
 
 def process_all_xmls(xml_folder_path):
-    """Read all XML files from folder and get <FieldDefinition> and records."""
-    field_mappings = {}  # DICT {arquivo.xml: {campo_Archer: ID}}
-    records_data = []  # Lista de registros extraídos
+    """Lê todos os XMLs na pasta e processa os registros."""
+    field_mappings = {}
+    records_data = []
 
-    # Lendo todos os arquivos XML na pasta
     xml_files_data = read_file(xml_folder_path)
-
     if not xml_files_data:
-        print("Nenhum arquivo XML encontrado ou erro ao processar.")
+        print("Nenhum arquivo XML encontrado.")
         return {}, []
 
     for xml_data in xml_files_data:
         root = xml_data["root"]
         file_name = xml_data["file_name"]
 
-        # Obter definições de campos
+        # Captura <FieldDefinition>
         field_mappings[file_name] = get_field_definitions(root)
 
-        # 📌 Capturar o ID do FieldDefinition associado ao Tracking_ID
+        # Captura o ID do Tracking_ID
         tracking_id_field_id = None
         for field_def in root.findall(".//FieldDefinition"):
-            if field_def.attrib.get("alias") == "Tracking_ID":  # Verifica se é o Tracking_ID
+            if field_def.attrib.get("alias") == "Tracking_ID":
                 tracking_id_field_id = field_def.attrib.get("id")
-                break  # Só precisamos de um
+                break
 
         if not tracking_id_field_id:
-            print(f"⚠️ Nenhum Tracking_ID encontrado no arquivo {file_name}. Pulando arquivo...")
-            continue  # Se não encontrar o Tracking_ID, pula esse arquivo
+            print(f"⚠️ Nenhum Tracking_ID encontrado no arquivo {file_name}. Pulando...")
+            continue
 
-        # 📌 Processar cada <Record>
         for record in root.findall(".//Record"):
-            record_data = {}  # Criamos um dicionário para armazenar os campos do registro
+            record_data = {}
+            tracking_id = None
 
-            # 📌 Pegar o valor do Tracking_ID no registro
-            id_evento = None
-            for field in record.findall(".//Field"):
-                if field.attrib.get("id") == tracking_id_field_id:
-                    id_evento = extract_text_from_field(field)  # Pega o valor do Tracking_ID
-                    break  # Já encontramos, podemos sair do loop
-
-            if not id_evento:
-                print(f"⚠️ Registro sem Tracking_ID encontrado. Pulando...")
-                continue  # Se não tiver Tracking_ID, ignoramos esse registro
-
-            record_data["idEvento"] = id_evento  # 🔹 Atribuímos o Tracking_ID como idEvento
-
-            # 📌 Iterar sobre os outros campos dentro do <Record>
             for field in record.findall(".//Field"):
                 field_id = field.attrib.get("id")
-                field_value = extract_text_from_field(field)  # Função para extrair valores corretamente
+                field_value = extract_text_from_field(field)
 
-                # Verificar se o ID do campo existe no mapeamento
-                if file_name in field_mappings:
-                    mapping = field_mappings[file_name]
-                    if field_id in mapping.values():  # Se o ID do campo existir no mapeamento
+                for file_name, mapping in field_mappings.items():
+                    if field_id in mapping.values():  
                         field_name = list(mapping.keys())[list(mapping.values()).index(field_id)]
-                        record_data[field_name] = field_value  # Associamos o nome correto ao valor
+                        record_data[field_name] = field_value
 
-            # 📌 Adicionamos o registro APÓS processar todos os campos
+                        if field_name == "Tracking_ID":  # 📌 Se for o campo Tracking_ID, armazenamos
+                            tracking_id = field_value
+
+            # 📌 Garantir que os campos `naturezaContingencia` e `tipoAvaliacao` estejam sempre no dicionário
+            # e garantir que idEvento receba o Tracking_ID corretamente
+            record_data["idEvento"] = tracking_id if tracking_id else "N/A"
+            record_data["naturezaContingencia"] = record_data.get("naturezaContingencia", "N/A")
+            record_data["tipoAvaliacao"] = record_data.get("tipoAvaliacao", "N/A")
+
             records_data.append(record_data)
 
-            # Debugging interno para verificar a extração correta do ID
-            print(f"📌 Processando registro: idEvento={record_data['idEvento']}")
-
-    # 📌 Debugging final
-    print("📌 Debug: Processamento do XML concluído.")
-    print(f"📂 Arquivos lidos: {xml_folder_path}")
-    print(f"🔎 Registros extraídos: {len(records_data)}")
-    
-    if not records_data:
-        print("⚠️ Nenhum registro foi extraído do XML! Verifique se a estrutura do XML mudou.")
 
     return field_mappings, records_data
 
-def create_cadoc_template(records_data):
-    """Create XML formatted on BACEN 5050 model, consolidate all records from Archer."""
+def substituir_categoria_n1_consol(xml_string):
+    """
+    Substitui os valores numéricos de <categoriaNivel1Consol> pelos seus equivalentes textuais
+    conforme o dicionário 'anexo1_categoria_n1'.
+    """
+    def substituir_match(match):
+        valor_numerico = match.group(1)  # Captura o valor da tag categoriaNivel1Consol
+        valor_texto = anexo1_categoria_n1.get(valor_numerico, "Desconhecido")  # Busca no dicionário
+        return f'categoriaNivel1Consol="{valor_texto}"'  # Retorna a substituição correta
 
-    # Create the root element fixed field data on 'cabeçalho' <documento>
-    documento = ET.Element("documento", {"codigoDocumento": "5050", "dataBase": "2025-01", "codigoConglomerado":"C0099999", "tipoRemessa": "I", "cnpj": "99999999", "opcaoPorProvisaoAcumulada": "N"})
+    # Regex para encontrar o atributo categoriaNivel1Consol dentro do XML
+    padrao_regex = r'categoriaNivel1Consol="(\d+)"'
 
-    # Create fields on other sections from `mapeamento_cadoc`
-    subelementos = {secao: ET.SubElement(documento, secao) for secao in mapeamento_cadoc}
+    # Substituir os valores no XML
+    xml_modificado = re.sub(padrao_regex, substituir_match, xml_string)
 
-    # Proccess all records and create a new element on the correspondent section
+    return xml_modificado
+
+import xml.etree.ElementTree as ET
+import re
+from datetime import datetime
+from xml.dom.minidom import parseString
+from archer_formatter.validation import formatar_valor_decimal
+from archer_formatter.anexos import mapear_categoria_n1_consolidado
+
+def create_cadoc_template(records_data, eventos_consolidados):
+    """
+    Cria o XML final no formato CADOC 5050 consolidando os dados.
+    """
+    print("📌 Gerando XML no formato CADOC 5050...")
+
+    # Criar o elemento raiz <documento>
+    documento = ET.Element("documento", {"codigoDocumento": "5050", "dataBase": "2025-01",
+                                          "codigoConglomerado": "C0099999", "tipoRemessa": "I", "cnpj": "99999999",
+                                          "opcaoPorProvisaoAcumulada": "N"})
+
+    # Criar os subelementos principais
+    eventos_individualizados_xml = ET.SubElement(documento, "eventosIndividualizados")
+    eventos_consolidados_xml = ET.SubElement(documento, "eventosConsolidados")
+
+    # Lista de campos permitidos no XML final
+    campos_permitidos = [
+        "idEvento", "categoriaNivel1", "valorTotalRisco", "unidadeNegocio",
+        "dataOcorrencia", "totalPerdaEfetiva", "totalRecuperado",
+        "codSistemaOrigem", "codigoEventoOrigem", "idBacen",
+        "naturezaContingencia", "tipoAvaliacao"
+    ]
+
+    # 📌 Processando eventos individualizados
     for record in records_data:
-        for secao, campos in mapeamento_cadoc.items():
-            atributos = {}
+        atributos = {campo: record[campo] for campo in campos_permitidos if campo in record}  # 🔥 Filtramos os campos permitidos
+        print("📌 Atributos filtrados:", atributos)  # Debug
 
-            for cadoc_campo, archer_campo in campos.items():
-                if archer_campo in record and record[archer_campo]:  # Verify is the field is present and not empty
-                    atributos[cadoc_campo] = record[archer_campo]
-            # Create new element inside the correspondent section only if there are attributes
-            if atributos:
-                ET.SubElement(subelementos[secao], "evento", atributos)
-    # Converter para string e formatar o XML
-    xml_string = ET.tostring(documento, encoding="utf-8")
-    pretty_xml = parseString(xml_string).toprettyxml(indent="  ")  # 2 spaces indentation
+        ET.SubElement(eventos_individualizados_xml, "evento", atributos)
 
-    pretty_xml = '<?xml version="1.0" encoding="utf-8"?>\n' + "\n".join(pretty_xml.split("\n")[1:])
-    
-    data_atual = datetime.now()
-    
-    data_atual_formatada = data_atual.strftime("%Y-%m-%d")
-    
-    final_filename = "cadoc-exported" + data_atual_formatada + ".xml"
-    
-    # Save the formatted XML prettified
+    # 📌 Adicionando eventos consolidados
+    print(f"📌 Eventos Consolidados Detalhes: {eventos_consolidados}")  # Debug
+
+    for categoria, dados in eventos_consolidados.items():
+        categoria_nivel_1_consol = mapear_categoria_n1_consolidado(categoria)  # Convertendo corretamente
+
+        atributos_consolidados = {
+            "categoriaNivel1Consol": categoria_nivel_1_consol,
+            "numEventosTotalConsol": str(dados["numEventosTotalConsol"]),
+            "numEventosSemestreConsol": str(dados["numEventosSemestreConsol"]),
+            "perdaEfetivaTotalConsol": formatar_valor_decimal(dados["perdaEfetivaTotalConsol"])[0],
+            "perdaEfetivaSemestreConsol": formatar_valor_decimal(dados["perdaEfetivaSemestreConsol"])[0],
+            "provisaoTotalConsol": formatar_valor_decimal(dados["provisaoTotalConsol"])[0],
+            "provisaoSemestreConsol": formatar_valor_decimal(dados["provisaoSemestreConsol"])[0]
+        }
+
+        print(f"✅ Evento Consolidado Adicionado: {atributos_consolidados}")  # Debug para verificar saída correta
+        ET.SubElement(eventos_consolidados_xml, "eventoConsolidado", atributos_consolidados)
+
+    # 📌 Criando o novo bloco <sistemasOrigem> abaixo de </eventosConsolidados>
+    sistemas_origem_xml = ET.SubElement(documento, "sistemasOrigem")
+    sistema = ET.SubElement(sistemas_origem_xml, "sistema", {
+        "codigoSistema": "Archer01",
+        "nomeSistema": "Gerenciamento de Riscos Integrados"
+    })
+
+    contas_sub_internos_xml = ET.SubElement(documento, "contasSubtitulosInternos")
+    conta = ET.SubElement(contas_sub_internos_xml, "conta", {
+        "codigoConta": "10000000001",
+        "nomeConta": "Conta1"
+    })
+
+    # Converter o XML para string formatada
+    xml_string = ET.tostring(documento, encoding="utf-8").decode("utf-8")
+    converted_xml = parseString(xml_string).toprettyxml(indent="  ")
+    converted_xml = '<?xml version="1.0" encoding="utf-8"?>\n' + "\n".join(converted_xml.split("\n")[1:])
+
+    # Gerar o nome do arquivo com data atual
+    data_atual = datetime.now().strftime("%Y-%m-%d")
+    final_filename = f"cadoc-exported-{data_atual}.xml"
+
     with open(final_filename, "w", encoding="utf-8") as file:
-        file.write(pretty_xml)
-    print("✅ XML criado e salvo com sucesso em com encoding UTF-8!")
+        file.write(converted_xml)
 
-    print(calculate_hash(final_filename))
+    print(f"✅ XML criado e salvo com sucesso como '{final_filename}'!")
 
-# Folder with XML files from Archer
-xml_folder = "data/xml_data/real_data"
-# Process all XML files and get fields and records
-field_mappings, records_data = process_all_xmls(xml_folder)
 
-# Call the function to create the XML in CADOC 5050 format
-# create_cadoc_template(records_data)
+
+# Execução principal
 if __name__ == "__main__":
-    # Process all XML files and get fields and records
+    xml_folder = "data/xml_data/real_data"
     field_mappings, records_data = process_all_xmls(xml_folder)
-    # Debug verify if the values of "Classificar de Evento" are being extracted correctly
-    for record in records_data:
-        print(f"Registro ID: {record.get('idEvento', 'N/A')}, Classificar de Evento: {record.get('Classificar de Evento', 'N/A')}")
-    # Call the function to create the XML in CADOC 5050 format
-    create_cadoc_template(records_data)
+    filtered_records, eventos_consolidados = filter_valid_records(records_data)
+    create_cadoc_template(filtered_records, eventos_consolidados)
