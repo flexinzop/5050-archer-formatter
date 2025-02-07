@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-16"?>
+<Records count="5">
+  <Record contentId="453711" levelId="147" levelGuid="9336b0bb-59d1-401e-914e-53663e4d1faf" moduleId="355" parentId="0">
+    <Field id="26680" guid="ab58d54b-391d-4970-a7f8-a499ea4c7606" type="1">&lt;p&gt;Risco Exemplo - CADOC 5050&lt;/p&gt;</Field>
+    <Field id="12191" guid="cc36c01a-538e-47d3-bacc-104af79953fe" type="6">453711</Field>
+    <Field id="31936" guid="b67af5ba-ce1c-4a49-aaab-0322f527d012" type="1">453422</Field>
+    <Field id="31938" guid="56ff71e0-0827-45ee-aaef-18675eb1f34a" type="1">Falhas em Sistemas de Tecnologia da Informação</Field>
+    <Field id="31939" guid="50789172-a1df-41fc-91b6-d3081c85fb47" type="1">1200000</Field>
+    <Field id="31953" guid="7f7c2198-48ce-4182-88c6-4678c075ee11" type="1">Área TESTE</Field>
+    <Field id="31940" guid="a336a3d7-766d-4251-b5af-22a878d3a4e2" type="3" xmlConvertedValue="2025-01-30T00:00:00Z">30/01/2025</Field>
+    <Field id="31954" guid="6eee8c54-1b5e-4fed-8d5f-f38cdd582fff" type="1">1000000</Field>
+    <Field id="31955" guid="b3efc7ce-8051-4741-a02e-df017b3df4b7" type="1">10000</Field>
+    <Field id="31957" guid="9e039f58-432f-446a-8f99-9f77c479b63c" type="1">38493292</Field>
+    <Field id="31958" guid="b3bd3d8d-df83-406b-a787-03f41e9fcce0" type="1">2938403292</Field>
+    <Field id="31959" guid="8ebf492e-0feb-413b-b6e6-2096072cd927" type="1">Z1234367</Field>
+    <Field id="27725" guid="6a6b1029-9b89-4351-83d7-c85b00a1e809" type="23">
+      <Reference id="453422">453422</Reference>
+    </Field>
+    <Field id="26682" guid="69845593-f498-4ad4-8649-845dc0882b0d" type="9">
+      <Reference id="419707">FR3</Reference>
+    </Field>
+    <Field id="31962" guid="339b145f-b4f7-4bdd-9041-7e61e3a5238c" type="4">
+      <ListValues>
+        <ListValue id="107857" displayName="NA">NA</ListValue>
+      </ListValues>
+    </Field>
+    <Field id="31963" guid="b7cdaeb4-2f69-452a-8fe0-c7dfe80c772b" type="1">I</Field>
+    <Field id="31944" guid="92f4be91-0a48-4688-9787-4e30c3fa0917" type="2">808</Field>
+    <Field id="31945" guid="753eaa08-57b2-49cc-98b6-90c26fb34816" type="1">Conta cosif</Field>
+    <Field id="31960" guid="9ca6ef3f-ecf3-4aa9-a741-8c6d2987535b" type="4">
+      <ListValues>
+        <ListValue id="107852" displayName="PR">PR</ListValue>
+      </ListValues>
+    </Field>
+  </Record>
+  <Record contentId="453756" levelId="147" levelGuid="9336b0bb-59d1-401e-914e-53663e4d1faf" moduleId="355" parentId="0">
+    <Field id="26680" guid="ab58d54b-391d-4970-a7f8-a499ea4c7606" type="1">&lt;p&gt;Risco Exemplo 2 - CADOC 5050&lt;/p&gt;</Field>
+    <Field id="12191" guid="cc36c01a-538e-47d3-bacc-104af79953fe" type="6">453756</Field>
+    <Field id="31936" guid="b67af5ba-ce1c-4a49-aaab-0322f527d012" type="1">453422</Field>
+    <Field id="31938" guid="56ff71e0-0827-45ee-aaef-18675eb1f34a" type="1">Fraudes externas</Field>
+    <Field id="31939" guid="50789172-a1df-41fc-91b6-d3081c85fb47" type="1">1200000</Field>
+    <Field id="31953" guid="7f7c2198-48ce-4182-88c6-4678c075ee11" type="1">Área TESTE</Field>
+    <Field id="31940" guid="a336a3d7-766d-4251-b5af-22a878d3a4e2" type="3" xmlConvertedValue="2025-01-30T00:00:00Z">30/01/2025</Field>
+    <Field id="31954" guid="6eee8c54-1b5e-4fed-8d5f-f38cdd582fff" type="1">10000000</Field>
+    <Field id="31955" guid="b3efc7ce-8051-4741-a02e-df017b3df4b7" type="1">10000</Field>
+    <Field id="31957" guid="9e039f58-432f-446a-8f99-9f77c479b63c" type="1">38493292</Field>
+    <Field id="31958" guid="b3bd3d8d-df83-406b-a787-03f41e9fcce0" type="1">2938403292</Field>
+    <Field id="31959" guid="8ebf492e-0feb-413b-b6e6-2096072cd927" type="1">Z1234361</Field>
+    <Field id="27725" guid="6a6b1029-9b89-4351-83d7-c85b00a1e809" type="23">
+      <Reference id="453422">453422</Reference>
+    </Field>
+    <Field id="26682" guid="69845593-f498-4ad4-8649-845dc0882b0d" type="9">
+      <Reference id="419707">FR3</Reference>
+    </Field>
+    <Field id="31962" guid="339b145f-b4f7-4bdd-9041-7e61e3a5238c" type="4">
+      <ListValues>
+        <ListValue id="107857" displayName="NA">NA</ListValue>
+      </ListValues>
+    </Field>
+    <Field id="31963" guid="b7cdaeb4-2f69-452a-8fe0-c7dfe80c772b" type="1">I</Field>
+    <Field id="31944" guid="92f4be91-0a48-4688-9787-4e30c3fa0917" type="2">808</Field>
+    <Field id="31945" guid="753eaa08-57b2-49cc-98b6-90c26fb34816" type="1">Conta cosif</Field>
+    <Field id="31960" guid="9ca6ef3f-ecf3-4aa9-a741-8c6d2987535b" type="4">
+      <ListValues>
+        <ListValue id="107852" displayName="PR">PR</ListValue>
+      </ListValues>
+    </Field>
+  </Record>
+  <Record contentId="453715" levelId="147" levelGuid="9336b0bb-59d1-401e-914e-53663e4d1faf" moduleId="355" parentId="0">
+    <Field id="26680" guid="ab58d54b-391d-4970-a7f8-a499ea4c7606" type="1">&lt;p&gt;Risco Exemplo 3 - CADOC 5050&lt;/p&gt;</Field>
+    <Field id="12191" guid="cc36c01a-538e-47d3-bacc-104af79953fe" type="6">453715</Field>
+    <Field id="31936" guid="b67af5ba-ce1c-4a49-aaab-0322f527d012" type="1">453422</Field>
+    <Field id="31938" guid="56ff71e0-0827-45ee-aaef-18675eb1f34a" type="1">Fraudes Externas</Field>
+    <Field id="31939" guid="50789172-a1df-41fc-91b6-d3081c85fb47" type="1">1200000</Field>
+    <Field id="31953" guid="7f7c2198-48ce-4182-88c6-4678c075ee11" type="1">Área TESTE</Field>
+    <Field id="31940" guid="a336a3d7-766d-4251-b5af-22a878d3a4e2" type="3" xmlConvertedValue="2025-01-30T00:00:00Z">30/01/2025</Field>
+    <Field id="31954" guid="6eee8c54-1b5e-4fed-8d5f-f38cdd582fff" type="1">340000</Field>
+    <Field id="31955" guid="b3efc7ce-8051-4741-a02e-df017b3df4b7" type="1">2384</Field>
+    <Field id="31957" guid="9e039f58-432f-446a-8f99-9f77c479b63c" type="1">68493292</Field>
+    <Field id="31958" guid="b3bd3d8d-df83-406b-a787-03f41e9fcce0" type="1">703292</Field>
+    <Field id="31959" guid="8ebf492e-0feb-413b-b6e6-2096072cd927" type="1">Z1234667</Field>
+    <Field id="27725" guid="6a6b1029-9b89-4351-83d7-c85b00a1e809" type="23">
+      <Reference id="453422">453422</Reference>
+    </Field>
+    <Field id="26682" guid="69845593-f498-4ad4-8649-845dc0882b0d" type="9">
+      <Reference id="419707">FR3</Reference>
+    </Field>
+    <Field id="31962" guid="339b145f-b4f7-4bdd-9041-7e61e3a5238c" type="4">
+      <ListValues>
+        <ListValue id="107855" displayName="TRA">TRA</ListValue>
+      </ListValues>
+    </Field>
+    <Field id="31963" guid="b7cdaeb4-2f69-452a-8fe0-c7dfe80c772b" type="1">I</Field>
+    <Field id="31944" guid="92f4be91-0a48-4688-9787-4e30c3fa0917" type="2">808</Field>
+    <Field id="31945" guid="753eaa08-57b2-49cc-98b6-90c26fb34816" type="1">Conta cosif</Field>
+    <Field id="31960" guid="9ca6ef3f-ecf3-4aa9-a741-8c6d2987535b" type="4">
+      <ListValues>
+        <ListValue id="107851" displayName="PO">PO</ListValue>
+      </ListValues>
+    </Field>
+  </Record>
+  <Record contentId="453714" levelId="147" levelGuid="9336b0bb-59d1-401e-914e-53663e4d1faf" moduleId="355" parentId="0">
+    <Field id="26680" guid="ab58d54b-391d-4970-a7f8-a499ea4c7606" type="1">&lt;p&gt;Risco Exemplo 4 - CADOC 5050&lt;/p&gt;</Field>
+    <Field id="12191" guid="cc36c01a-538e-47d3-bacc-104af79953fe" type="6">453714</Field>
+    <Field id="31936" guid="b67af5ba-ce1c-4a49-aaab-0322f527d012" type="1">453754</Field>
+    <Field id="31938" guid="56ff71e0-0827-45ee-aaef-18675eb1f34a" type="1">Danos a ativos físicos próprios ou em uso pela instituição</Field>
+    <Field id="31939" guid="50789172-a1df-41fc-91b6-d3081c85fb47" type="1">970000</Field>
+    <Field id="31953" guid="7f7c2198-48ce-4182-88c6-4678c075ee11" type="1">Área TESTE</Field>
+    <Field id="31940" guid="a336a3d7-766d-4251-b5af-22a878d3a4e2" type="3" xmlConvertedValue="2025-02-26T00:00:00Z">26/02/2025</Field>
+    <Field id="31954" guid="6eee8c54-1b5e-4fed-8d5f-f38cdd582fff" type="1">10000000</Field>
+    <Field id="31955" guid="b3efc7ce-8051-4741-a02e-df017b3df4b7" type="1">2384</Field>
+    <Field id="31957" guid="9e039f58-432f-446a-8f99-9f77c479b63c" type="1">68493292</Field>
+    <Field id="31958" guid="b3bd3d8d-df83-406b-a787-03f41e9fcce0" type="1">2938403292</Field>
+    <Field id="31959" guid="8ebf492e-0feb-413b-b6e6-2096072cd927" type="1">Z1234564</Field>
+    <Field id="27725" guid="6a6b1029-9b89-4351-83d7-c85b00a1e809" type="23">
+      <Reference id="453754">453754</Reference>
+    </Field>
+    <Field id="26682" guid="69845593-f498-4ad4-8649-845dc0882b0d" type="9">
+      <Reference id="419707">FR3</Reference>
+    </Field>
+    <Field id="31962" guid="339b145f-b4f7-4bdd-9041-7e61e3a5238c" type="4">
+      <ListValues>
+        <ListValue id="107856" displayName="CIV">CIV</ListValue>
+      </ListValues>
+    </Field>
+    <Field id="31963" guid="b7cdaeb4-2f69-452a-8fe0-c7dfe80c772b" type="1">I</Field>
+    <Field id="31944" guid="92f4be91-0a48-4688-9787-4e30c3fa0917" type="2">10000007890</Field>
+    <Field id="31945" guid="753eaa08-57b2-49cc-98b6-90c26fb34816" type="1">Descrição</Field>
+    <Field id="31960" guid="9ca6ef3f-ecf3-4aa9-a741-8c6d2987535b" type="4">
+      <ListValues>
+        <ListValue id="107851" displayName="PO">PO</ListValue>
+      </ListValues>
+    </Field>
+  </Record>
+  <Record contentId="453755" levelId="147" levelGuid="9336b0bb-59d1-401e-914e-53663e4d1faf" moduleId="355" parentId="0">
+    <Field id="26680" guid="ab58d54b-391d-4970-a7f8-a499ea4c7606" type="1">&lt;p&gt;Risco Exemplo 5 - CADOC 5050&lt;/p&gt;</Field>
+    <Field id="12191" guid="cc36c01a-538e-47d3-bacc-104af79953fe" type="6">453755</Field>
+    <Field id="31936" guid="b67af5ba-ce1c-4a49-aaab-0322f527d012" type="1">453754</Field>
+    <Field id="31938" guid="56ff71e0-0827-45ee-aaef-18675eb1f34a" type="1">Danos a ativos físicos próprios ou em uso pela instituição</Field>
+    <Field id="31939" guid="50789172-a1df-41fc-91b6-d3081c85fb47" type="1">970000</Field>
+    <Field id="31953" guid="7f7c2198-48ce-4182-88c6-4678c075ee11" type="1">Área TESTE</Field>
+    <Field id="31940" guid="a336a3d7-766d-4251-b5af-22a878d3a4e2" type="3" xmlConvertedValue="2025-02-26T00:00:00Z">26/02/2025</Field>
+    <Field id="31954" guid="6eee8c54-1b5e-4fed-8d5f-f38cdd582fff" type="1">30000000</Field>
+    <Field id="31955" guid="b3efc7ce-8051-4741-a02e-df017b3df4b7" type="1">2384</Field>
+    <Field id="31957" guid="9e039f58-432f-446a-8f99-9f77c479b63c" type="1">68493292</Field>
+    <Field id="31958" guid="b3bd3d8d-df83-406b-a787-03f41e9fcce0" type="1">2938403292</Field>
+    <Field id="31959" guid="8ebf492e-0feb-413b-b6e6-2096072cd927" type="1">Z1234567</Field>
+    <Field id="27725" guid="6a6b1029-9b89-4351-83d7-c85b00a1e809" type="23">
+      <Reference id="453754">453754</Reference>
+    </Field>
+    <Field id="26682" guid="69845593-f498-4ad4-8649-845dc0882b0d" type="9">
+      <Reference id="419707">FR3</Reference>
+    </Field>
+    <Field id="31962" guid="339b145f-b4f7-4bdd-9041-7e61e3a5238c" type="4">
+      <ListValues>
+        <ListValue id="107856" displayName="CIV">CIV</ListValue>
+      </ListValues>
+    </Field>
+    <Field id="31963" guid="b7cdaeb4-2f69-452a-8fe0-c7dfe80c772b" type="1">I</Field>
+    <Field id="31944" guid="92f4be91-0a48-4688-9787-4e30c3fa0917" type="2">10000007890</Field>
+    <Field id="31945" guid="753eaa08-57b2-49cc-98b6-90c26fb34816" type="1">Descrição</Field>
+    <Field id="31960" guid="9ca6ef3f-ecf3-4aa9-a741-8c6d2987535b" type="4">
+      <ListValues>
+        <ListValue id="107851" displayName="PO">PO</ListValue>
+      </ListValues>
+    </Field>
+  </Record>
+  <Metadata>
+    <FieldDefinitions>
+      <FieldDefinition id="12191" guid="cc36c01a-538e-47d3-bacc-104af79953fe" name="Tracking ID" alias="Tracking_ID" />
+      <FieldDefinition id="26680" guid="ab58d54b-391d-4970-a7f8-a499ea4c7606" name="Risco" alias="Risco" />
+      <FieldDefinition id="26682" guid="69845593-f498-4ad4-8649-845dc0882b0d" name="Fator(es) de Risco" alias="Fatores_de_Risco" />
+      <FieldDefinition id="27725" guid="6a6b1029-9b89-4351-83d7-c85b00a1e809" name="Eventos de Perdas" alias="Loss_Events_Riscos" />
+      <FieldDefinition id="31936" guid="b67af5ba-ce1c-4a49-aaab-0322f527d012" name="idEvento" alias="idEvento" />
+      <FieldDefinition id="31938" guid="56ff71e0-0827-45ee-aaef-18675eb1f34a" name="categoriaNivel1" alias="categoriaNivel1" />
+      <FieldDefinition id="31939" guid="50789172-a1df-41fc-91b6-d3081c85fb47" name="valorTotalRisco" alias="valorTotalRisco" />
+      <FieldDefinition id="31940" guid="a336a3d7-766d-4251-b5af-22a878d3a4e2" name="dataOcorrencia" alias="dataOcorrencia" />
+      <FieldDefinition id="31944" guid="92f4be91-0a48-4688-9787-4e30c3fa0917" name="codigoConta" alias="codigoConta" />
+      <FieldDefinition id="31945" guid="753eaa08-57b2-49cc-98b6-90c26fb34816" name="nomeConta" alias="nomeConta" />
+      <FieldDefinition id="31953" guid="7f7c2198-48ce-4182-88c6-4678c075ee11" name="unidadeNegocio" alias="unidadeNegocio" />
+      <FieldDefinition id="31954" guid="6eee8c54-1b5e-4fed-8d5f-f38cdd582fff" name="totalPerdaEfetiva" alias="totalPerdaEfetiva" />
+      <FieldDefinition id="31955" guid="b3efc7ce-8051-4741-a02e-df017b3df4b7" name="totalRecuperado" alias="totalRecuperado" />
+      <FieldDefinition id="31957" guid="9e039f58-432f-446a-8f99-9f77c479b63c" name="codSistemaOrigem" alias="codSistemaOrigem" />
+      <FieldDefinition id="31958" guid="b3bd3d8d-df83-406b-a787-03f41e9fcce0" name="codigoEventoOrigem" alias="codigoEventoOrigem" />
+      <FieldDefinition id="31959" guid="8ebf492e-0feb-413b-b6e6-2096072cd927" name="idBacen" alias="idBacen" />
+      <FieldDefinition id="31960" guid="9ca6ef3f-ecf3-4aa9-a741-8c6d2987535b" name="probabilidadesPerdas" alias="probabilidadesPerdas" />
+      <FieldDefinition id="31962" guid="339b145f-b4f7-4bdd-9041-7e61e3a5238c" name="naturezaContingencia" alias="naturezaContingencia" />
+      <FieldDefinition id="31963" guid="b7cdaeb4-2f69-452a-8fe0-c7dfe80c772b" name="tipoAvaliacao" alias="tipoAvaliacao" />
+    </FieldDefinitions>
+  </Metadata>
+  <LevelCounts>
+    <LevelCount id="147" guid="9336b0bb-59d1-401e-914e-53663e4d1faf" count="5" />
+  </LevelCounts>
+</Records>
