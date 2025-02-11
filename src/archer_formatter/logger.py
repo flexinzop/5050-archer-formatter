@@ -1,19 +1,21 @@
 import logging
 
+import logging
+
 def init_logger():
-    # Create the logger
-    logger = logging.getLogger('archer_formatter')
-    logger.setLevel(logging.DEBUG)
+    """Inicializa um logger global para evitar logs duplicados."""
+    logger = logging.getLogger("archer_formatter")
 
-    # Create the file handler
-    file_handler = logging.FileHandler('archer_formatter.log', encoding='utf-8')
-    file_handler.setLevel(logging.DEBUG)
+    # 🔍 Evita múltiplos handlers no logger
+    if not logger.hasHandlers():
+        logger.setLevel(logging.INFO)
 
-    # Create the logging format
-
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    file_handler.setFormatter(formatter)
-
-    logger.addHandler(file_handler)
+        # Criar um handler para salvar logs em um arquivo
+        handler = logging.FileHandler("archer_formatter.log", mode="w", encoding="utf-8")
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        handler.setFormatter(formatter)
+        
+        # Adicionar handler apenas se ainda não existir
+        logger.addHandler(handler)
     
     return logger

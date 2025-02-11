@@ -32,6 +32,12 @@
         <ListValue id="107852" displayName="PR">PR</ListValue>
       </ListValues>
     </Field>
+    <Field id="31974" guid="4cbbbe6f-8ad4-4a36-a13f-c3e23c3db5b9" type="4">
+      <ListValues>
+        <ListValue id="107861" displayName="Negociação e vendas">Negociação e vendas</ListValue>
+      </ListValues>
+    </Field>
+    <Field id="31961" guid="d3cadebd-d193-40c7-aec5-025552721b78" type="1">100000</Field>
   </Record>
   <Record contentId="453756" levelId="147" levelGuid="9336b0bb-59d1-401e-914e-53663e4d1faf" moduleId="355" parentId="0">
     <Field id="26680" guid="ab58d54b-391d-4970-a7f8-a499ea4c7606" type="1">&lt;p&gt;Risco Exemplo 2 - CADOC 5050&lt;/p&gt;</Field>
@@ -65,6 +71,12 @@
         <ListValue id="107852" displayName="PR">PR</ListValue>
       </ListValues>
     </Field>
+    <Field id="31974" guid="4cbbbe6f-8ad4-4a36-a13f-c3e23c3db5b9" type="4">
+      <ListValues>
+        <ListValue id="107862" displayName="Pagamentos e liquidações">Pagamentos e liquidações</ListValue>
+      </ListValues>
+    </Field>
+    <Field id="31961" guid="d3cadebd-d193-40c7-aec5-025552721b78" type="1">1000003</Field>
   </Record>
   <Record contentId="453715" levelId="147" levelGuid="9336b0bb-59d1-401e-914e-53663e4d1faf" moduleId="355" parentId="0">
     <Field id="26680" guid="ab58d54b-391d-4970-a7f8-a499ea4c7606" type="1">&lt;p&gt;Risco Exemplo 3 - CADOC 5050&lt;/p&gt;</Field>
@@ -98,6 +110,12 @@
         <ListValue id="107851" displayName="PO">PO</ListValue>
       </ListValues>
     </Field>
+    <Field id="31974" guid="4cbbbe6f-8ad4-4a36-a13f-c3e23c3db5b9" type="4">
+      <ListValues>
+        <ListValue id="107864" displayName="Administração de ativos">Administração de ativos</ListValue>
+      </ListValues>
+    </Field>
+    <Field id="31961" guid="d3cadebd-d193-40c7-aec5-025552721b78" type="1">37000</Field>
   </Record>
   <Record contentId="453714" levelId="147" levelGuid="9336b0bb-59d1-401e-914e-53663e4d1faf" moduleId="355" parentId="0">
     <Field id="26680" guid="ab58d54b-391d-4970-a7f8-a499ea4c7606" type="1">&lt;p&gt;Risco Exemplo 4 - CADOC 5050&lt;/p&gt;</Field>
@@ -131,6 +149,12 @@
         <ListValue id="107851" displayName="PO">PO</ListValue>
       </ListValues>
     </Field>
+    <Field id="31974" guid="4cbbbe6f-8ad4-4a36-a13f-c3e23c3db5b9" type="4">
+      <ListValues>
+        <ListValue id="107861" displayName="Negociação e vendas">Negociação e vendas</ListValue>
+      </ListValues>
+    </Field>
+    <Field id="31961" guid="d3cadebd-d193-40c7-aec5-025552721b78" type="1">37000</Field>
   </Record>
   <Record contentId="453755" levelId="147" levelGuid="9336b0bb-59d1-401e-914e-53663e4d1faf" moduleId="355" parentId="0">
     <Field id="26680" guid="ab58d54b-391d-4970-a7f8-a499ea4c7606" type="1">&lt;p&gt;Risco Exemplo 5 - CADOC 5050&lt;/p&gt;</Field>
@@ -164,6 +188,12 @@
         <ListValue id="107851" displayName="PO">PO</ListValue>
       </ListValues>
     </Field>
+    <Field id="31974" guid="4cbbbe6f-8ad4-4a36-a13f-c3e23c3db5b9" type="4">
+      <ListValues>
+        <ListValue id="107861" displayName="Negociação e vendas">Negociação e vendas</ListValue>
+      </ListValues>
+    </Field>
+    <Field id="31961" guid="d3cadebd-d193-40c7-aec5-025552721b78" type="1">37000</Field>
   </Record>
   <Metadata>
     <FieldDefinitions>
@@ -184,8 +214,10 @@
       <FieldDefinition id="31958" guid="b3bd3d8d-df83-406b-a787-03f41e9fcce0" name="codigoEventoOrigem" alias="codigoEventoOrigem" />
       <FieldDefinition id="31959" guid="8ebf492e-0feb-413b-b6e6-2096072cd927" name="idBacen" alias="idBacen" />
       <FieldDefinition id="31960" guid="9ca6ef3f-ecf3-4aa9-a741-8c6d2987535b" name="probabilidadesPerdas" alias="probabilidadesPerdas" />
+      <FieldDefinition id="31961" guid="d3cadebd-d193-40c7-aec5-025552721b78" name="valorRisco" alias="valorRisco" />
       <FieldDefinition id="31962" guid="339b145f-b4f7-4bdd-9041-7e61e3a5238c" name="naturezaContingencia" alias="naturezaContingencia" />
       <FieldDefinition id="31963" guid="b7cdaeb4-2f69-452a-8fe0-c7dfe80c772b" name="tipoAvaliacao" alias="tipoAvaliacao" />
+      <FieldDefinition id="31974" guid="4cbbbe6f-8ad4-4a36-a13f-c3e23c3db5b9" name="catUnidadeNegocio" alias="catUnidadeNegocio" />
     </FieldDefinitions>
   </Metadata>
   <LevelCounts>
