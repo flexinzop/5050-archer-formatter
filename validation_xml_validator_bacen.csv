@@ -1,9 +1,0 @@
-INICIANDO VALIDAÇÃO Fri Feb 07 03:29:42 BRT 2025
-cvc-pattern-valid: Value 'Área TESTE' is not facet-valid with respect to pattern '[1-8]{1}' for type 'tipoUnidadeNegocio'.
-cvc-attribute.3: The value 'Área TESTE' of attribute 'unidadeNegocio' on element 'evento' is not valid with respect to its type, 'tipoUnidadeNegocio'.
-cvc-pattern-valid: Value 'Área TESTE' is not facet-valid with respect to pattern '[1-8]{1}' for type 'tipoUnidadeNegocio'.
-cvc-attribute.3: The value 'Área TESTE' of attribute 'unidadeNegocio' on element 'evento' is not valid with respect to its type, 'tipoUnidadeNegocio'.
-cvc-pattern-valid: Value 'Área TESTE' is not facet-valid with respect to pattern '[1-8]{1}' for type 'tipoUnidadeNegocio'.
-cvc-attribute.3: The value 'Área TESTE' of attribute 'unidadeNegocio' on element 'evento' is not valid with respect to its type, 'tipoUnidadeNegocio'.
-cvc-complex-type.2.4.b: The content of element 'documento' is not complete. One of '{sistemasOrigem, contasSubtitulosInternos}' is expected.
-TÉRMINO DO PROCESSO DE VALIDAÇÃO Fri Feb 07 03:29:42 BRT 2025

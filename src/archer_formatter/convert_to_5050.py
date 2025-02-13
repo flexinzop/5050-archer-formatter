@@ -6,8 +6,8 @@ from archer_formatter.read_xml_file import read_file, get_field_definitions, map
 from archer_formatter.logger import init_logger
 from archer_formatter.utils import formatar_valor_decimal
 from archer_formatter.validation import filter_valid_records
-from archer_formatter.anexos import anexo1_categoria_n1
-from archer_formatter.anexos import mapear_categoria_n1_consolidado
+from archer_formatter.anexos import anexo1_categoria_n1, mapear_categoria_n1_consolidado
+from archer_formatter.validation import converter_unidade_negocio
 
 
 logger = init_logger()  # Inicializa o logger
@@ -101,13 +101,6 @@ def substituir_categoria_n1_consol(xml_string):
 
     return xml_modificado
 
-import xml.etree.ElementTree as ET
-import re
-from datetime import datetime
-from xml.dom.minidom import parseString
-from archer_formatter.validation import formatar_valor_decimal
-from archer_formatter.anexos import mapear_categoria_n1_consolidado
-
 def create_cadoc_template(records_data, eventos_consolidados):
     """
     Cria o XML final no formato CADOC 5050 consolidando os dados.
@@ -135,6 +128,11 @@ def create_cadoc_template(records_data, eventos_consolidados):
     for record in records_data:
         atributos = {campo: record[campo] for campo in campos_permitidos if campo in record}  # 🔥 Filtramos os campos permitidos
         print("📌 Atributos filtrados:", atributos)  # Debug
+        # Dentro do loop que processa os registros do XML do Archer:
+        texto_unidade_negocio = record.get("catUnidadeNegocio", "")  # Obtém o texto da unidade do XML do Archer
+        codigo_unidade_negocio = converter_unidade_negocio(texto_unidade_negocio)  # Converte para número
+
+        atributos["unidadeNegocio"] = codigo_unidade_negocio  # Adiciona ao XML final
 
         ET.SubElement(eventos_individualizados_xml, "evento", atributos)
 
@@ -183,7 +181,6 @@ def create_cadoc_template(records_data, eventos_consolidados):
         file.write(converted_xml)
 
     print(f"✅ XML criado e salvo com sucesso como '{final_filename}'!")
-
 
 
 # Execução principal

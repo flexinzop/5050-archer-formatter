@@ -25,7 +25,7 @@
       </ListValues>
     </Field>
     <Field id="31963" guid="b7cdaeb4-2f69-452a-8fe0-c7dfe80c772b" type="1">I</Field>
-    <Field id="31944" guid="92f4be91-0a48-4688-9787-4e30c3fa0917" type="2">808</Field>
+    <Field id="31944" guid="92f4be91-0a48-4688-9787-4e30c3fa0917" type="2" />
     <Field id="31945" guid="753eaa08-57b2-49cc-98b6-90c26fb34816" type="1">Conta cosif</Field>
     <Field id="31960" guid="9ca6ef3f-ecf3-4aa9-a741-8c6d2987535b" type="4">
       <ListValues>
@@ -64,7 +64,7 @@
       </ListValues>
     </Field>
     <Field id="31963" guid="b7cdaeb4-2f69-452a-8fe0-c7dfe80c772b" type="1">I</Field>
-    <Field id="31944" guid="92f4be91-0a48-4688-9787-4e30c3fa0917" type="2">808</Field>
+    <Field id="31944" guid="92f4be91-0a48-4688-9787-4e30c3fa0917" type="2" />
     <Field id="31945" guid="753eaa08-57b2-49cc-98b6-90c26fb34816" type="1">Conta cosif</Field>
     <Field id="31960" guid="9ca6ef3f-ecf3-4aa9-a741-8c6d2987535b" type="4">
       <ListValues>
@@ -103,7 +103,7 @@
       </ListValues>
     </Field>
     <Field id="31963" guid="b7cdaeb4-2f69-452a-8fe0-c7dfe80c772b" type="1">I</Field>
-    <Field id="31944" guid="92f4be91-0a48-4688-9787-4e30c3fa0917" type="2">808</Field>
+    <Field id="31944" guid="92f4be91-0a48-4688-9787-4e30c3fa0917" type="2" />
     <Field id="31945" guid="753eaa08-57b2-49cc-98b6-90c26fb34816" type="1">Conta cosif</Field>
     <Field id="31960" guid="9ca6ef3f-ecf3-4aa9-a741-8c6d2987535b" type="4">
       <ListValues>
@@ -142,7 +142,7 @@
       </ListValues>
     </Field>
     <Field id="31963" guid="b7cdaeb4-2f69-452a-8fe0-c7dfe80c772b" type="1">I</Field>
-    <Field id="31944" guid="92f4be91-0a48-4688-9787-4e30c3fa0917" type="2">10000007890</Field>
+    <Field id="31944" guid="92f4be91-0a48-4688-9787-4e30c3fa0917" type="2" />
     <Field id="31945" guid="753eaa08-57b2-49cc-98b6-90c26fb34816" type="1">Descrição</Field>
     <Field id="31960" guid="9ca6ef3f-ecf3-4aa9-a741-8c6d2987535b" type="4">
       <ListValues>
@@ -181,7 +181,7 @@
       </ListValues>
     </Field>
     <Field id="31963" guid="b7cdaeb4-2f69-452a-8fe0-c7dfe80c772b" type="1">I</Field>
-    <Field id="31944" guid="92f4be91-0a48-4688-9787-4e30c3fa0917" type="2">10000007890</Field>
+    <Field id="31944" guid="92f4be91-0a48-4688-9787-4e30c3fa0917" type="2" />
     <Field id="31945" guid="753eaa08-57b2-49cc-98b6-90c26fb34816" type="1">Descrição</Field>
     <Field id="31960" guid="9ca6ef3f-ecf3-4aa9-a741-8c6d2987535b" type="4">
       <ListValues>

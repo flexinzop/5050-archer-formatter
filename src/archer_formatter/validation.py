@@ -1,5 +1,6 @@
 from archer_formatter.logger import init_logger
 from archer_formatter.utils import formatar_valor_decimal
+from archer_formatter.anexos import unidade_de_negocio
 
 logger = init_logger()  # Init logger
 
@@ -67,3 +68,15 @@ def filter_valid_records(records_data):
     logger.info(f"🔎 Validação concluída. Registros individuais: {len(filtered_records)}, Eventos Consolidados: {len(consolidados)}")
 
     return filtered_records, consolidados  # Retorna os registros individuais e os consolidados
+
+def converter_unidade_negocio(texto_unidade):
+    """Converte a unidade de negócio do Archer (texto) para seu código numérico no dicionário."""
+    if not texto_unidade:
+        return "N/A"  # Retorna "N/A" se estiver vazio
+
+    # 🔎 Faz a correspondência baseada nos primeiros 12 caracteres (igual categoriaNivel1)
+    for numero, nome in unidade_de_negocio.items():
+        if texto_unidade[:12].strip().lower() == nome[:12].strip().lower():
+            return numero  # Retorna o código numérico associado
+    
+    return "0"  # Se não encontrar correspondência, retorna 0
