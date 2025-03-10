@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<documento codigoDocumento="5050" dataBase="2025-01" codigoConglomerado="C0099999" tipoRemessa="I" cnpj="99999999" opcaoPorProvisaoAcumulada="N">
+  <eventosIndividualizados>
+    <evento idEvento="454639" categoriaNivel1="7" valorTotalRisco="1200000.00" dataOcorrencia="2025-01-30" totalPerdaEfetiva="1000000.00" totalRecuperado="10000.00" codSistemaOrigem="38493292" codigoEventoOrigem="2938403292" idBacen="Z1234367" naturezaContingencia="NA" tipoAvaliacao="I" unidadeNegocio="4"/>
+    <evento idEvento="454640" categoriaNivel1="2" valorTotalRisco="1200000.00" dataOcorrencia="2025-01-30" totalPerdaEfetiva="10000000.00" totalRecuperado="10000.00" codSistemaOrigem="38493292" codigoEventoOrigem="2938403292" idBacen="Z1234361" naturezaContingencia="NA" tipoAvaliacao="I" unidadeNegocio="5"/>
+    <evento idEvento="454641" categoriaNivel1="2" valorTotalRisco="1200000.00" dataOcorrencia="2025-01-30" totalPerdaEfetiva="340000.00" totalRecuperado="2384.00" codSistemaOrigem="68493292" codigoEventoOrigem="703292" idBacen="Z1234667" naturezaContingencia="TRA" tipoAvaliacao="I" unidadeNegocio="7"/>
+  </eventosIndividualizados>
+  <eventosConsolidados>
+    <eventoConsolidado categoriaNivel1Consol="5" numEventosTotalConsol="2" numEventosSemestreConsol="0" perdaEfetivaTotalConsol="40000000.00" perdaEfetivaSemestreConsol="0.00" provisaoTotalConsol="0.00" provisaoSemestreConsol="0.00"/>
+  </eventosConsolidados>
+  <sistemasOrigem>
+    <sistema codigoSistema="Archer01" nomeSistema="Gerenciamento de Riscos Integrados"/>
+  </sistemasOrigem>
+  <contasSubtitulosInternos>
+    <conta codigoConta="10000000001" nomeConta="Conta1"/>
+  </contasSubtitulosInternos>
+</documento>

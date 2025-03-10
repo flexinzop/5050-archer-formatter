@@ -57,7 +57,7 @@ class Taskflow:
 
             # Remover registros que não contenham todos os campos preenchidos
             complete_records = []
-            required_fields = ["idEvento", "categoriaNivel1", "valorTotalRisco", "unidadeNegocio", "dataOcorrencia", "totalPerdaEfetiva", "totalRecuperado", "codSistemaOrigem", "codigoEventoOrigem", "idBacen" ]  # Campos obrigatórios
+            required_fields = ["idEvento", "categoriaNivel1", "valorTotalRisco","dataOcorrencia", "totalPerdaEfetiva", "totalRecuperado", "codSistemaOrigem", "codigoEventoOrigem", "idBacen" ]  # Campos obrigatórios
 
             for record in records_data:
                 if all(record.get(field, "").strip() for field in required_fields):

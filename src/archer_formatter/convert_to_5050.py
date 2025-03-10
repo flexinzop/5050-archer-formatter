@@ -14,7 +14,7 @@ logger = init_logger()  # Inicializa o logger
 
 # Define campos obrigatórios (evita erro de importação)
 required_fields = ["idEvento", "valorTotalRisco", "categoriaNivel1", "dataOcorrencia", 
-                   "unidadeNegocio", "totalPerdaEfetiva", "totalRecuperado", 
+                   "totalPerdaEfetiva", "totalRecuperado", 
                    "codSistemaOrigem", "codigoEventoOrigem", "idBacen"]
 
 def extract_text_from_field(field):
@@ -48,7 +48,7 @@ def process_all_xmls(xml_folder_path):
         # Captura o ID do Tracking_ID
         tracking_id_field_id = None
         for field_def in root.findall(".//FieldDefinition"):
-            if field_def.attrib.get("alias") == "Tracking_ID":
+            if field_def.attrib.get("alias") == "Loss_Event_ID":
                 tracking_id_field_id = field_def.attrib.get("id")
                 break
 
@@ -69,7 +69,7 @@ def process_all_xmls(xml_folder_path):
                         field_name = list(mapping.keys())[list(mapping.values()).index(field_id)]
                         record_data[field_name] = field_value
 
-                        if field_name == "Tracking_ID":  # 📌 Se for o campo Tracking_ID, armazenamos
+                        if field_name == "Loss_Event_ID":  # 📌 Se for o campo Tracking_ID, armazenamos
                             tracking_id = field_value
 
             # 📌 Garantir que os campos `naturezaContingencia` e `tipoAvaliacao` estejam sempre no dicionário
@@ -118,7 +118,7 @@ def create_cadoc_template(records_data, eventos_consolidados):
 
     # Lista de campos permitidos no XML final
     campos_permitidos = [
-        "idEvento", "categoriaNivel1", "valorTotalRisco", "unidadeNegocio",
+        "idEvento", "categoriaNivel1", "valorTotalRisco",
         "dataOcorrencia", "totalPerdaEfetiva", "totalRecuperado",
         "codSistemaOrigem", "codigoEventoOrigem", "idBacen",
         "naturezaContingencia", "tipoAvaliacao"

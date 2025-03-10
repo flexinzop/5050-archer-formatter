@@ -6,7 +6,7 @@ from pathlib import Path
 # Mapeamento de campos por seção no CADOC 5050
 mapeamento_cadoc = {
     "eventosIndividualizados": {
-        "idEvento": "Tracking_ID",
+        "idEvento": "Loss_Event_ID",
         "categoriaNivel1": "categoriaNivel1",
         "valorTotalRisco" : "valorTotalRisco",
         "tipoAvaliacao": "tipoAvaliacao",
