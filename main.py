@@ -1,12 +1,3 @@
-#----------------------------------------------------------------#
-#                                                                #
-#     Desc: Script para converter arquivos CSV                   #
-#     em XML mantendo o padrão elencado pelo BACEN CADOC 5050    #                                                  
-#     Author: Samuel Pimenta                                     #                                        
-#     Company: Athena Soluções Inteligentes                      #
-#     Data: 01/10/24                                             #
-#                                                                #
-#----------------------------------------------------------------#
 
 # RUN
 # pyinstaller --name=Archer_to_5050 --onefile --add-data "src;src" --hidden-import=xml.etree.ElementTree --hidden-import=xml.dom --hidden-import=xml.dom.minidom main.py
@@ -20,7 +11,7 @@ from archer_formatter.read_xml_file import read_file
 from archer_formatter.convert_to_5050 import process_all_xmls, create_cadoc_template
 from archer_formatter.logger import init_logger
 from archer_formatter.utils import formatar_valor_decimal, format_date
-from archer_formatter.anexos import mapear_categoria_n1
+from archer_formatter.anexos import mapear_categoria_n1, mapear_categoria_n2
 from archer_formatter.validation import filter_valid_records
 
 class Taskflow:
@@ -57,7 +48,7 @@ class Taskflow:
 
             # Remover registros que não contenham todos os campos preenchidos
             complete_records = []
-            required_fields = ["idEvento", "categoriaNivel1", "valorTotalRisco","dataOcorrencia", "totalPerdaEfetiva", "totalRecuperado", "codSistemaOrigem", "codigoEventoOrigem", "idBacen" ]  # Campos obrigatórios
+            required_fields = ["idEvento", "categoriaNivel1", "categoriaNivel2", "valorTotalRisco","dataOcorrencia", "totalPerdaEfetiva", "totalRecuperado", "codSistemaOrigem", "codigoEventoOrigem", "idBacen" ]  # Campos obrigatórios
 
             for record in records_data:
                 if all(record.get(field, "").strip() for field in required_fields):
@@ -83,8 +74,21 @@ class Taskflow:
                     recuperado_formatado, recuperado_float = formatar_valor_decimal(record.get("totalRecuperado", "0").strip())
                     dataOcorrencia_formatada = format_date(record.get("dataOcorrencia", "0").strip())
                     # Mapear categoria textual para código numérico
-                    categoria_texto = record.get("categoriaNivel1", "").strip()
-                    categoria_numerica = mapear_categoria_n1(categoria_texto)  # 🔥 Aqui chamamos a função!
+                    # categoria_texto = record.get("categoriaNivel1", "").strip()
+                    # categoria_numerica = mapear_categoria_n1(categoria_texto)  # Aqui chamamos a função!
+                    if "Classificar_Evento" in record:
+                        categorias = record["Classificar_Evento"].split(":")
+                        record["categoriaNivel1"] = categorias[0] if len(categorias) > 0 else "N/A"
+                        record["categoriaNivel2"] = categorias[1] if len(categorias) > 1 else "N/A"
+                    
+                    categoria1_texto = record.get("categoriaNivel1", "").strip()
+                    categoria1_numerica = mapear_categoria_n1(categoria1_texto)
+
+                    categoria2_texto = record.get("categoriaNivel2", "").strip()
+                    categoria2_numerica = mapear_categoria_n2(categoria2_texto)  # ✅ Agora usa a função certa!
+
+                    if categoria2_numerica == "0":
+                        print(f"⚠️ AVISO: CategoriaNivel2 '{categoria2_texto}' não encontrada no dicionário!")
 
                     if valor_risco > 1000000:  # Comparação feita com o FLOAT
                          # Insert STRING on XML
@@ -92,7 +96,8 @@ class Taskflow:
                         record["totalPerdaEfetiva"] = perda_formatada  # 
                         record["totalRecuperado"] = recuperado_formatado #
                         record["dataOcorrencia"] = dataOcorrencia_formatada #
-                        record["categoriaNivel1"] = categoria_numerica #
+                        record["categoriaNivel1"] = categoria1_numerica #
+                        record["categoriaNivel2"] = categoria2_numerica #
 
                         filtered_records.append(record)
                         self.logger.info(f"✅ Registro {record.get('idEvento', 'N/A')} incluído no XML (valorTotalRisco: {record['valorTotalRisco']}, totalPerdaEfetiva: {record['totalPerdaEfetiva']})")
@@ -123,7 +128,7 @@ class Taskflow:
 
 
 # Definir o caminho do XML APENAS UMA VEZ
-xml_folder_path = "data/xml_data/real_data"
+xml_folder_path = "../Data_Feed/5050"
 
 # Executar o fluxo de processamento
 if __name__ == "__main__":

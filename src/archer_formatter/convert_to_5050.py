@@ -13,7 +13,7 @@ from archer_formatter.validation import converter_unidade_negocio
 logger = init_logger()  # Inicializa o logger
 
 # Define campos obrigatórios (evita erro de importação)
-required_fields = ["idEvento", "valorTotalRisco", "categoriaNivel1", "dataOcorrencia", 
+required_fields = ["idEvento", "valorTotalRisco", "categoriaNivel1", "categoriaNivel2" "dataOcorrencia", 
                    "totalPerdaEfetiva", "totalRecuperado", 
                    "codSistemaOrigem", "codigoEventoOrigem", "idBacen"]
 
@@ -77,7 +77,13 @@ def process_all_xmls(xml_folder_path):
             record_data["idEvento"] = tracking_id if tracking_id else "N/A"
             record_data["naturezaContingencia"] = record_data.get("naturezaContingencia", "N/A")
             record_data["tipoAvaliacao"] = record_data.get("tipoAvaliacao", "N/A")
+            # record_data["categoriaNivel2"] = record_data.get("Classificar_Evento", "N/A")
+            classificar_evento = record_data.get("Classificar_Evento", "N/A")
+            categorias = classificar_evento.split(":")  
 
+            record_data["categoriaNivel1"] = categorias[0] if len(categorias) > 0 else "N/A"
+            record_data["categoriaNivel2"] = categorias[1] if len(categorias) > 1 else "N/A"
+            
             records_data.append(record_data)
 
 
@@ -118,7 +124,7 @@ def create_cadoc_template(records_data, eventos_consolidados):
 
     # Lista de campos permitidos no XML final
     campos_permitidos = [
-        "idEvento", "categoriaNivel1", "valorTotalRisco",
+        "idEvento", "categoriaNivel1" , "categoriaNivel2", "valorTotalRisco",
         "dataOcorrencia", "totalPerdaEfetiva", "totalRecuperado",
         "codSistemaOrigem", "codigoEventoOrigem", "idBacen",
         "naturezaContingencia", "tipoAvaliacao"
@@ -140,7 +146,17 @@ def create_cadoc_template(records_data, eventos_consolidados):
     print(f"📌 Eventos Consolidados Detalhes: {eventos_consolidados}")  # Debug
 
     for categoria, dados in eventos_consolidados.items():
-        categoria_nivel_1_consol = mapear_categoria_n1_consolidado(categoria)  # Convertendo corretamente
+        classificar_evento = record.get("Classificar_Evento", "N/A")
+        categorias = classificar_evento.split(":") # Separador de valores da lista nested
+        categoria_nivel_1_consol = mapear_categoria_n1_consolidado(categoria)
+        
+        # if "categoriaNivel1" not in record:
+        #     classificar_evento = record.get("Classificar_Evento", "N/A")
+        #     categorias = classificar_evento.split(":") # Separador de valores da lista nested
+        #     record["categoriaNivel1"] = categorias[0] if len(categorias) > 0 else "N/A"
+            
+        categoria_nivel_1_consol = mapear_categoria_n1_consolidado(categoria)  # ✅ Mapeia corretamente a categoria consolidada
+
 
         atributos_consolidados = {
             "categoriaNivel1Consol": categoria_nivel_1_consol,
@@ -185,7 +201,8 @@ def create_cadoc_template(records_data, eventos_consolidados):
 
 # Execução principal
 if __name__ == "__main__":
-    xml_folder = "data/xml_data/real_data"
+    xml_folder = "../Data_Feed/5050"
+    # xml_folder = "data/xml_data/real_data/new"
     field_mappings, records_data = process_all_xmls(xml_folder)
     filtered_records, eventos_consolidados = filter_valid_records(records_data)
     create_cadoc_template(filtered_records, eventos_consolidados)

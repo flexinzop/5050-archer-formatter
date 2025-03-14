@@ -51,14 +51,34 @@ def mapear_categoria_n1(valor_texto):
     
     Se o valor não for encontrado, retorna "0" e registra um aviso.
     """
-    valor_texto = valor_texto.lower().strip()[:16]  # 🔥 Pega só os 12 primeiros caracteres
+    valor_texto = valor_texto.lower().strip()[:16]  # Pega só os 12 primeiros caracteres
 
     for codigo, descricao in anexo1_categoria_n1.items():
-        if descricao.lower().strip()[:16] == valor_texto:  # 🔥 Comparação parcial
+        if descricao.lower().strip()[:16] == valor_texto:  # Comparação parcial
             return codigo
 
     print(f"⚠️ AVISO: Categoria '{valor_texto}' não encontrada no dicionário! Retornando '0'.")
     return "0"  # Código padrão se não encontrar
+
+def mapear_categoria_n2(valor_texto):
+    """
+    Converte um valor textual de categoriaNivel2 para seu código numérico baseado no dicionário de categorias.
+    - Faz a comparação apenas nos **12 primeiros caracteres** para encontrar a correspondência.
+
+    Exemplo: 
+      - "Captura, execução e manutenção de transações" → "81"
+    
+    Se o valor não for encontrado, retorna "0" e registra um aviso.
+    """
+    valor_texto = valor_texto.lower().strip()[:12]  # Pega só os 12 primeiros caracteres
+
+    for codigo, descricao in anexo2_categoria_n2.items():
+        if descricao.lower().strip()[:12] == valor_texto:  # Comparação parcial
+            return codigo
+
+    print(f"⚠️ AVISO: Categoria '{valor_texto}' não encontrada no dicionário! Retornando '0'.")
+    return "0"  # Código padrão se não encontrar
+
 
 def mapear_categoria_n1_consolidado(valor_texto):
     """Mapeia a descrição da categoria para seu código numérico apenas para eventos consolidados."""
@@ -73,4 +93,5 @@ def mapear_categoria_n1_consolidado(valor_texto):
 
     print(f"⚠️ AVISO: Categoria '{valor_texto}' não encontrada para consolidação! Retornando '0'.")
     return "0"
+
 
