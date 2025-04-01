@@ -2,7 +2,6 @@ import xml.etree.ElementTree as ET
 import codecs
 from pathlib import Path
 
-
 # Mapeamento de campos por seção no CADOC 5050
 mapeamento_cadoc = {
     "eventosIndividualizados": {
@@ -56,22 +55,22 @@ def read_file(xml_folder_path):
         for file in xml_files:
             print(f"📂 Processando arquivo: {file}")
 
-            # 📌 Abrir o arquivo em modo binário para detectar a codificação
+            # Abrir o arquivo em modo binário para detectar a codificação
             with open(file, "rb") as f:
                 raw_data = f.read()
 
-            # 📌 Tentar detectar a codificação automaticamente
+            # Tentar detectar a codificação automaticamente
             encoding = "utf-8"  # Assumimos UTF-8 como padrão
             if raw_data[:2] == b'\xff\xfe' or raw_data[:2] == b'\xfe\xff':
-                encoding = "utf-16"  # Se tiver BOM, é UTF-16
+                encoding = "utf-16"  # Padrão também aceito 
             
             print(f"📌 Encoding detectado: {encoding}")
 
-            # 📌 Abrir e converter para UTF-8 caso necessário
+            # brir e converter para UTF-8 caso necessário
             with codecs.open(file, "r", encoding=encoding) as f:
                 xml_content = f.read()
 
-            # 📌 Criar a árvore XML a partir da string UTF-8 convertida
+            # Criar a árvore XML a partir da string UTF-8 convertida
             root = ET.fromstring(xml_content)
 
             # Adiciona o objeto raiz e o nome do arquivo à lista
@@ -81,7 +80,7 @@ def read_file(xml_folder_path):
             })
 
     except Exception as e:
-        print(f"❌ Erro ao ler o arquivo {file}: {e}")
+        print(f"Erro ao ler o arquivo {file}: {e}")
         return None
 
     return xml_data_list

@@ -1,9 +1,18 @@
+#----------------------------------------------------------------#
+#                                                                #
+#     Desc: Script para converter arquivos XML                   #
+#     para o padrão elencado pelo BACEN CADOC 5050               #                                                  
+#     Author: Samuel Pimenta                                     #                                        
+#     Company: Athena Soluções Inteligentes                      #
+#                                                                #
+#----------------------------------------------------------------#
 
 # RUN
 # pyinstaller --name=Archer_to_5050 --onefile --add-data "src;src" --hidden-import=xml.etree.ElementTree --hidden-import=xml.dom --hidden-import=xml.dom.minidom main.py
 
 import logging
 import sys, os
+from datetime import datetime
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "src")))
 
@@ -13,11 +22,12 @@ from archer_formatter.logger import init_logger
 from archer_formatter.utils import formatar_valor_decimal, format_date
 from archer_formatter.anexos import mapear_categoria_n1, mapear_categoria_n2
 from archer_formatter.validation import filter_valid_records
+from archer_formatter.hash_file import calculate_hash
 
 class Taskflow:
     def __init__(self, xml_path):
         self.xml_path = xml_path
-        self.logger = init_logger()  # ✅ Agora o logger está configurado corretamente
+        self.logger = init_logger()  # Inicialização do logger
 
     def execute(self):
         self.logger.info("🔎 Iniciando validação dos registros...")
@@ -26,27 +36,29 @@ class Taskflow:
         self.logger.info("✅ Processamento finalizado com sucesso!")
         
         try:
-            # Ler arquivos XML
-            self.logger.info(f"📂 Reading XML files from {self.xml_path}...")
+            # Fluxo de execução
+            # 1. Ler arquivos XML
+            self.logger.info(f"📂 Lendo arquivos XML da pasta: {self.xml_path}...")
             xml_files_data = read_file(self.xml_path)
 
             if not xml_files_data:
-                self.logger.error("❌ No XML files found or failed to process files.")
+                self.logger.error("❌ Houve uma falha no processamento do XML ou nenhum XML foi encontrado.")
                 return
 
-            self.logger.info("✅ XML files have been read successfully!")
+            self.logger.info("✅ O arquivo XML foi processado com sucesso!")
 
-            # Processar os registros do XML
-            self.logger.info("📊 Extracting records from XML files...")
+            # 2. Processar os registros do XML
+            self.logger.info("📊 Extraindo registros do XML...")
             field_mappings, records_data = process_all_xmls(self.xml_path)
 
             if not records_data:
-                self.logger.warning("⚠️ No records found in the XML files.")
+                self.logger.warning("⚠️ Nenhum registro encontrado no XML.")
                 return
             
-            self.logger.info(f"🔎 Extracted {len(records_data)} records from XML files.")
+            self.logger.info(f"🔎 Extraídos {len(records_data)} registros do arquivo XML.")
 
             # Remover registros que não contenham todos os campos preenchidos
+            # Campos obrigatórios
             complete_records = []
             required_fields = ["idEvento", "categoriaNivel1", "categoriaNivel2", "valorTotalRisco","dataOcorrencia", "totalPerdaEfetiva", "totalRecuperado", "codSistemaOrigem", "codigoEventoOrigem", "idBacen" ]  # Campos obrigatórios
 
@@ -57,12 +69,13 @@ class Taskflow:
                     self.logger.warning(f"⚠️ Registro {record.get('idEvento', 'N/A')} descartado por conter campos vazios.")
 
             # Agora, aplicar a filtragem do valor do risco APENAS nos registros completos
+            # 3. Filtrar os registros
             filtered_records = []
             for record in complete_records:
                 valor_risco_str = str(record.get("valorTotalRisco", "0")).strip()
 
                 if not valor_risco_str:
-                    self.logger.warning(f"⚠️ Registro {record.get('idEvento', 'N/A')} descartado por não ter 'valorTotalRisco' preenchido.")
+                    self.logger.warning(f"⚠️ Registro {record.get('idEvento', 'N/A')} descartado por não conter 'valorTotalRisco' preenchido.")
                     continue  # Pula para o próximo registro
 
                 try:
@@ -75,7 +88,6 @@ class Taskflow:
                     dataOcorrencia_formatada = format_date(record.get("dataOcorrencia", "0").strip())
                     # Mapear categoria textual para código numérico
                     # categoria_texto = record.get("categoriaNivel1", "").strip()
-                    # categoria_numerica = mapear_categoria_n1(categoria_texto)  # Aqui chamamos a função!
                     if "Classificar_Evento" in record:
                         categorias = record["Classificar_Evento"].split(":")
                         record["categoriaNivel1"] = categorias[0] if len(categorias) > 0 else "N/A"
@@ -85,13 +97,13 @@ class Taskflow:
                     categoria1_numerica = mapear_categoria_n1(categoria1_texto)
 
                     categoria2_texto = record.get("categoriaNivel2", "").strip()
-                    categoria2_numerica = mapear_categoria_n2(categoria2_texto)  # ✅ Agora usa a função certa!
+                    categoria2_numerica = mapear_categoria_n2(categoria2_texto)
 
                     if categoria2_numerica == "0":
                         print(f"⚠️ AVISO: CategoriaNivel2 '{categoria2_texto}' não encontrada no dicionário!")
 
                     if valor_risco > 1000000:  # Comparação feita com o FLOAT
-                         # Insert STRING on XML
+                        # Insert STRING on XML
                         record["valorTotalRisco"] = valor_formatado #
                         record["totalPerdaEfetiva"] = perda_formatada  # 
                         record["totalRecuperado"] = recuperado_formatado #
@@ -113,17 +125,18 @@ class Taskflow:
                 self.logger.warning("⚠️ Nenhum registro válido encontrado após a validação. O XML não será gerado.")
                 return
 
-            # 📌 Gerar o XML somente com os registros completos e válidos
+            # Gerar o XML somente com os registros completos e válidos
             self.logger.info("📝 Gerando o XML final...")
-            # 📌 Chamando a validação e recebendo os dois retornos (eventos individuais e eventos consolidados)
+            # Chamando a validação e recebendo os dois retornos (eventos individuais e eventos consolidados)
+            # 4. Validar os registros
             filtered_records, eventos_consolidados = filter_valid_records(records_data)
 
-            # 📌 Passamos os DOIS valores ao criar o XML
+            # 5. Criar o XML final
             create_cadoc_template(filtered_records, eventos_consolidados)
 
 
         except Exception as e:
-            self.logger.error(f"❌ An error occurred during execution: {e}")
+            self.logger.error(f"❌ Ocorreu um erro durante a execução: {e}")
             raise e
 
 
@@ -134,3 +147,10 @@ xml_folder_path = "../Data_Feed/5050"
 if __name__ == "__main__":
     flow = Taskflow(xml_folder_path)
     flow.execute()
+    
+    # Calcular o hash do arquivo gerado
+    data_atual = datetime.now().strftime("%Y-%m-%d")
+    final_filename = f"cadoc-exported-{data_atual}.xml"
+    file_hash = calculate_hash(final_filename)
+    print(f"\n🔍 Hash do arquivo gerado ({final_filename}):")
+    print(f"SHA256: {file_hash}")

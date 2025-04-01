@@ -23,24 +23,24 @@ def filter_valid_records(records_data):
     logger.info("🔎 Iniciando validação dos registros...")
 
     for record in records_data:
-        # 📌 Verificar se todos os campos obrigatórios estão preenchidos
+        # Verificar se todos os campos obrigatórios estão preenchidos
         missing_fields = [field for field in required_fields if not record.get(field)]
         
         if missing_fields:
             logger.warning(f"⚠️ Registro {record.get('idEvento', 'N/A')} descartado. Campos ausentes: {missing_fields}")
             continue  # Ignorar registro incompleto
 
-        # 📌 Converter e obter os valores numéricos formatados
+        # Converter e obter os valores numéricos formatados
         valor_formatado, valor_risco = formatar_valor_decimal(record.get("valorTotalRisco", "0").strip())
         perda_formatada, perda_float = formatar_valor_decimal(record.get("totalPerdaEfetiva", "0").strip())
 
-        if valor_risco >= 1000000:  # 📌 Eventos individuais
+        if valor_risco >= 1000000:  # Eventos individuais
             record["valorTotalRisco"] = valor_formatado
             record["totalPerdaEfetiva"] = perda_formatada
             filtered_records.append(record)
             logger.info(f"✅ Registro {record.get('idEvento', 'N/A')} incluído nos eventos individualizados.")
         
-        else:  # 📌 Eventos a serem consolidados
+        else:  # Eventos a serem consolidados
             categoria = record.get("categoriaNivel1", "0")  # Pega a categoria ou define "0" se não existir
             perda_efetiva = perda_float
             recuperado = float(record.get("totalRecuperado", "0") or 0)  # Garantir conversão correta
@@ -57,7 +57,7 @@ def filter_valid_records(records_data):
                     "provisaoSemestreConsol": 0  # Pode ser atualizado com uma regra específica
                 }
 
-            # 📌 Atualizar valores agregados
+            # Atualizar valores agregados
             consolidados[categoria]["numEventosTotalConsol"] += 1
             consolidados[categoria]["perdaEfetivaTotalConsol"] += perda_efetiva
             consolidados[categoria]["provisaoTotalConsol"] += provisao

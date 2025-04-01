@@ -11,7 +11,7 @@ def init_logger():
         logger.setLevel(logging.INFO)
 
         # Criar um handler para salvar logs em um arquivo
-        handler = logging.FileHandler("archer_formatter.log", mode="w", encoding="utf-8")
+        handler = logging.FileHandler("archer_5050_formatter.log", mode="w", encoding="utf-8")
         formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         handler.setFormatter(formatter)
         

@@ -72,7 +72,7 @@ def process_all_xmls(xml_folder_path):
                         if field_name == "Loss_Event_ID":  # 📌 Se for o campo Tracking_ID, armazenamos
                             tracking_id = field_value
 
-            # 📌 Garantir que os campos `naturezaContingencia` e `tipoAvaliacao` estejam sempre no dicionário
+            # Garantir que os campos `naturezaContingencia` e `tipoAvaliacao` estejam sempre no dicionário
             # e garantir que idEvento receba o Tracking_ID corretamente
             record_data["idEvento"] = tracking_id if tracking_id else "N/A"
             record_data["naturezaContingencia"] = record_data.get("naturezaContingencia", "N/A")
@@ -111,7 +111,7 @@ def create_cadoc_template(records_data, eventos_consolidados):
     """
     Cria o XML final no formato CADOC 5050 consolidando os dados.
     """
-    print("📌 Gerando XML no formato CADOC 5050...")
+    print("Gerando XML no formato CADOC 5050...")
 
     # Criar o elemento raiz <documento>
     documento = ET.Element("documento", {"codigoDocumento": "5050", "dataBase": "2025-01",
@@ -130,10 +130,10 @@ def create_cadoc_template(records_data, eventos_consolidados):
         "naturezaContingencia", "tipoAvaliacao"
     ]
 
-    # 📌 Processando eventos individualizados
+    # Processando eventos individualizados
     for record in records_data:
         atributos = {campo: record[campo] for campo in campos_permitidos if campo in record}  # 🔥 Filtramos os campos permitidos
-        print("📌 Atributos filtrados:", atributos)  # Debug
+        # print("Atributos filtrados:", atributos)  # Debug
         # Dentro do loop que processa os registros do XML do Archer:
         texto_unidade_negocio = record.get("catUnidadeNegocio", "")  # Obtém o texto da unidade do XML do Archer
         codigo_unidade_negocio = converter_unidade_negocio(texto_unidade_negocio)  # Converte para número
@@ -142,8 +142,8 @@ def create_cadoc_template(records_data, eventos_consolidados):
 
         ET.SubElement(eventos_individualizados_xml, "evento", atributos)
 
-    # 📌 Adicionando eventos consolidados
-    print(f"📌 Eventos Consolidados Detalhes: {eventos_consolidados}")  # Debug
+    # Adicionando eventos consolidados
+    # print(f"Eventos Consolidados Detalhes: {eventos_consolidados}")  # Debug
 
     for categoria, dados in eventos_consolidados.items():
         classificar_evento = record.get("Classificar_Evento", "N/A")
@@ -155,9 +155,9 @@ def create_cadoc_template(records_data, eventos_consolidados):
         #     categorias = classificar_evento.split(":") # Separador de valores da lista nested
         #     record["categoriaNivel1"] = categorias[0] if len(categorias) > 0 else "N/A"
             
-        categoria_nivel_1_consol = mapear_categoria_n1_consolidado(categoria)  # ✅ Mapeia corretamente a categoria consolidada
+        categoria_nivel_1_consol = mapear_categoria_n1_consolidado(categoria)  # Mapeia corretamente a categoria consolidada
 
-
+        # Consolidação dos atributos
         atributos_consolidados = {
             "categoriaNivel1Consol": categoria_nivel_1_consol,
             "numEventosTotalConsol": str(dados["numEventosTotalConsol"]),
@@ -171,7 +171,7 @@ def create_cadoc_template(records_data, eventos_consolidados):
         print(f"✅ Evento Consolidado Adicionado: {atributos_consolidados}")  # Debug para verificar saída correta
         ET.SubElement(eventos_consolidados_xml, "eventoConsolidado", atributos_consolidados)
 
-    # 📌 Criando o novo bloco <sistemasOrigem> abaixo de </eventosConsolidados>
+    # Criando o novo bloco <sistemasOrigem> abaixo de </eventosConsolidados>
     sistemas_origem_xml = ET.SubElement(documento, "sistemasOrigem")
     sistema = ET.SubElement(sistemas_origem_xml, "sistema", {
         "codigoSistema": "Archer01",
@@ -201,8 +201,7 @@ def create_cadoc_template(records_data, eventos_consolidados):
 
 # Execução principal
 if __name__ == "__main__":
-    xml_folder = "../Data_Feed/5050"
-    # xml_folder = "data/xml_data/real_data/new"
-    field_mappings, records_data = process_all_xmls(xml_folder)
+    from main import xml_folder_path
+    field_mappings, records_data = process_all_xmls(xml_folder_path)
     filtered_records, eventos_consolidados = filter_valid_records(records_data)
     create_cadoc_template(filtered_records, eventos_consolidados)
